@@ -1,0 +1,46 @@
+# Vikingové
+- Germánské kmeny
+- Zbraně
+	- Meče
+	- Sekery
+	- kopí
+	- luk a šípy
+	- štíty
+	- přilby
+- Sociální struktura
+	- Král
+		- Nejvyšší vládce
+	- Jarlové
+		- Šlechta
+	- Karlové
+		- rolníci
+	- (nestihl)
+- Kultura války
+	- válka
+	- odvaha a síla
+	- valhalla
+	- Boj = víra a životní styl
+- Vikingské děti
+	- učení od rodičů
+	- chlapci - boj
+	- dívky - domácnost
+	- pomoc na farmě či dílně
+- Vikingské ženy
+	- větší svoboda
+	- domácnost, majetek
+	- mohli se rozvést
+- Jídlo
+	- pivo
+		- pili z vikingských rohů
+	- Maso
+		- převážně vepřový, hovězí a ryby
+- Lodě
+	- Drakkary
+		- Rychlé
+		- mohli na moře i řeky
+- Bohové
+	- věřili severské mythologii
+	- Odin, Thor, Loki, Týr, Frey
+	- Ásů
+	- Vanů
+- 

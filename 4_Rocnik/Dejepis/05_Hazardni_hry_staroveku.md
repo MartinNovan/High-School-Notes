@@ -1,0 +1,25 @@
+# Hazardní hry starověku
+- Egypt: Senet - Hra života a smrti
+	- 3100př.n.l. - Vznik hry Senet ve starověkém egyptě
+	- Cesta duše - symbolizovala průchod duše posmrtným životem
+- Řecko a Řím: Hazard jako společenský fenomén
+	- Řečtí hráči - kostky, sázení na sport a Tyche
+	- Římská vášeň - závody zajatců, gladiátoři a hra Tabula
+- Keltové a jejich kamenné kostky
+	- Integrovali hazard do svých slavností a náboženských rituálů
+	- Kostky měli magický význam pro kelty
+- Čína: Keno a hra o štěstí
+	- Keno - 2000 let historie - starověká loterie
+	- Finanvování projektů - Výnosy financovali Velkou čínskou zeď
+- Mariáš: Český příspěvek do historie
+	- Karetní tradice 
+- Hazard v renesanční Evropě: Benátský Ridotto
+	- první státem financovaná herna
+	- pro šlechtu a bohaté elity
+	- hrály se karetní hry, loterie
+- Symbolika a rituály: Hazard jako cesta osuddu
+	- Božká vůle
+	- Předpovídání budoucnosti
+- Dědictví starověkých hazardních her dnes
+	- Základy hraní
+	- Kulturní fenomén

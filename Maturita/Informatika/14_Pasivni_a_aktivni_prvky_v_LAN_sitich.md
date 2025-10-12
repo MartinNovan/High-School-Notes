@@ -1,0 +1,1 @@
+# Pasivní a aktivní prvky v LAN sítích

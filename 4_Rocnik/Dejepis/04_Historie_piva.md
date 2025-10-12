@@ -1,0 +1,34 @@
+# Historie piva
+- počátky piva
+	- pivo je nejstarší nápoj lidstva
+	- vytvořeno v Mezopotámii
+	- vzniklo náhodou
+	- Bohyně piva Ninkasi 
+- Pivo v Egyptě
+	- Pivo bylo základní potravinou a platidlem
+	- Děti ho pili také
+	- Ženy se podíleli na vaření piva
+	- Archeologové zde našli nejstarší varnu
+- Pivo v Evropě
+	- Pivo se do Evropy dostalo Kelty a Germány
+	- Dochucovali ho bylinkami
+- Středověk
+	- Pivo vytvářeli mniši v klášterech
+	- pivo se stalo bezpečnější než voda
+	- Nová metoda - spodní kvašení
+	- začali používat chmel namísto bylin
+- Renesance a novověk
+	- 16. - 18. století - vznikali městské pivovary
+	- první pivní zákony a regulace
+	- vylepšili skladování
+	- začalo se dovážet pivo do blízkých oblastí (neměli totiž chlazení)
+- 19. století
+	- Pivovary začali používat stroje, páru a chladící zařízení
+	- byly objeveny mikroorganismy
+	- 1842 - Pillsner Urqell - první světlý ležák
+- Pivo v Česku
+	- pivo je v součástí české kultury
+	- Češi mají největší spotřebu piva
+	- české pivo = světová kvalita
+- Zajímavosti a fakta
+	- Nejstarší recept - Mezopotámie cca 3900 př.n.l.

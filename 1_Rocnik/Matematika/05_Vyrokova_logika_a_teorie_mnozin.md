@@ -1,0 +1,1 @@
+# Výroková logika a teorie množin
