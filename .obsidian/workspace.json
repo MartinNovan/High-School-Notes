@@ -4,22 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "e9753f33d27c289c",
+        "id": "5f840b680beebc8c",
         "type": "tabs",
         "children": [
           {
-            "id": "8dd2e5fffdfe441a",
+            "id": "33e908221e8c2907",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1_Rocnik/Cesky_jazyk/01_Literarni_druhy_a_zanry_literarni_formy.md",
+                "file": "1_Rocnik/Cesky_jazyk/Pracovni_listy/16_Jak_spravne_citovat.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "01_Literarni_druhy_a_zanry_literarni_formy"
+              "title": "16_Jak_spravne_citovat"
             }
           }
         ]
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1_Rocnik/Cesky_jazyk/01_Literarni_druhy_a_zanry_literarni_formy.md",
+                "file": "1_Rocnik/Cesky_jazyk/Pracovni_listy/16_Jak_spravne_citovat.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 01_Literarni_druhy_a_zanry_literarni_formy"
+              "title": "Outline of 16_Jak_spravne_citovat"
             }
           }
         ],
@@ -173,53 +173,53 @@
       "markdown-importer:Open format converter": false
     }
   },
-  "active": "ff0de9ed59e460a9",
+  "active": "33e908221e8c2907",
   "lastOpenFiles": [
     "1_Rocnik/Cesky_jazyk/00_Literatura_ucebnice_1.pdf",
-    "4_Rocnik/Automatizace/03_Logicke_obvody.md",
-    "4_Rocnik/Automatizace/Materialy/_02obr logicke obvody 251001 1.pdf",
-    "Maturita/Informatika/Obrazky/Graph_directed_adjacency_list.png",
-    "Excalidraw/Drawing 2025-11-19 15.57.20.md",
-    "Maturita/Informatika/Obrazky/Graph_directed_adjacency_matrix.png",
-    "Maturita/Informatika/Obrazky/Graph_undirected_adjacency_matrix.png",
+    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/bud_panem_sveho_prostoru.pdf",
+    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/Admin 4.0 brozura.pdf",
+    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/Bezpecne_v_cyber_brozura.pdf",
+    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/jak_na_internet_bezpecne (1).pdf",
+    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/1D_KYB_pojmy.pdf",
+    "1_Rocnik/Cesky_jazyk/01_Uvod_do_studia_literatury.md",
     "Maturita/Informatika/01_Datove_struktury.md",
-    "Maturita/Informatika/Obrazky/Graph_directed_DFS_and_BFS.gif",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 89409.crdownload",
-    "Maturita/Informatika/Obrazky/Graph_BFS.gif",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 823492.crdownload",
-    "Pasted image 20251119145555.png",
-    "Maturita/Informatika/Obrazky/Graph_DFS.gif",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 25024.crdownload",
-    "Maturita/Informatika/Obrazky/Graph_undirected_adjacency_list.png",
-    "Maturita/Informatika/Obrazky/Graphs_propeties.gif",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 657856.crdownload",
-    "Maturita/Informatika/Obrazky/Graph.png",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 659103.crdownload",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 169612.crdownload",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 241810.crdownload",
-    "Maturita/Informatika/26_Radici_a_vyhledavaci_algoritmy.md",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 618503.crdownload",
-    "Maturita/Informatika/Obrazky/Nepotvrzeno 520430.crdownload",
     "Maturita/Informatika/02_Webove_aplikace.md",
+    "Maturita/Informatika/03_Databazove_systemy.md",
     "Maturita/Informatika/05_Datove_typy.md",
-    "1_Rocnik/Elektrotechnika/01_Uvod_do_elektrotechniky.md",
-    "1_Rocnik/Cesky_jazyk/15_Tvorba_dotazniku.md",
-    "1_Rocnik/Cesky_jazyk/12_Ctvrtletni_prace.md",
-    "1_Rocnik/Cesky_jazyk/10_Dekameron.md",
-    "1_Rocnik/Cesky_jazyk/07_Pololetni_test_otazky.md",
-    "1_Rocnik/Cesky_jazyk/05_Pisemka_1D.md",
-    "1_Rocnik/Cesky_jazyk/04_Funkcni_styly_a_slohove_postupy.md",
-    "1_Rocnik/Cesky_jazyk/02_Teorie_literatury.md",
-    "1_Rocnik/Cesky_jazyk/01_Literarni_druhy_a_zanry_literarni_formy.md",
-    "1_Rocnik/Elektrotechnika/README.md",
-    "1_Rocnik/Elektrotechnika/08_Stridavy_proud.md",
-    "1_Rocnik/Elektrotechnika/07_Magnetismus.md",
-    "4_Rocnik/Operacni_systemy/README.md",
-    "4_Rocnik/Operacni_systemy/07_Souborove_systemy_GNU_Linux.md",
-    "4_Rocnik/Vyvoj_aplikaci/02_Sql_dotazy_v_aplikacich.md",
-    "4_Rocnik/Vyvoj_aplikaci/01_Sql_Server_Management_Studio.md",
-    "1_Rocnik/Cesky_jazyk/X1_Uvod_do_studia_literatury.md",
-    "1_Rocnik/Cesky_jazyk/X6_Evropska_literatura_18_stoleti.md",
-    "1_Rocnik/Cesky_jazyk/X5_Barokni_literatura.md"
+    "Maturita/Informatika/04_GUI_aplikace.md",
+    "Maturita/Informatika/06_Strukturovane_programovani.md",
+    "1_Rocnik/Cesky_jazyk/README.md",
+    "1_Rocnik/Cesky_jazyk/Pracovni_listy/01_Literarni_druhy_a_zanry_literarni_formy.md",
+    "1_Rocnik/Cesky_jazyk/Pracovni_listy",
+    "Maturita/README.md",
+    "README.md",
+    "Maturita/Informatika/08_Rozdeleni_aplikaci_a_softwarove_licence.md",
+    "Maturita/Informatika/09_Tabulkove_procesory.md",
+    "Maturita/Informatika/11_Vektorova_grafika.md",
+    "Maturita/Informatika/12_Rastrova_grafika.md",
+    "Maturita/Informatika/13_Navrh_LAN_siti.md",
+    "Maturita/Informatika/10_Cloudove_aplikace.md",
+    "Maturita/Informatika/07_Objektove_orientovane_programovani.md",
+    "4_Rocnik/Cesky_jazyk/Otázky_Test.md",
+    "4_Rocnik/Cesky_jazyk/05_Uvahovy_text.md",
+    "4_Rocnik/Dejepis/01_Uvod_do_dejepisu.md",
+    "4_Rocnik/Dejepis/03_Vikingove.md",
+    "4_Rocnik/Dejepis/06_Utecte_ze_zelare.md",
+    "4_Rocnik/Kyberneticka_bezpecnost/02_Odstraneni_viru_OS.md",
+    "4_Rocnik/Kyberneticka_bezpecnost/01_Zavadeni_OS.md",
+    "4_Rocnik/Mikroprocesorova_technika/20251114_092236.jpg",
+    "2_Rocnik/Cislicova_technika/Zápisy/zápisky.pdf",
+    "2_Rocnik/Cislicova_technika/Zápisy/01_Ukol_Novan.pdf",
+    "1_Rocnik/Pracovní_sešit.pdf",
+    "1_Rocnik/Matematika/20251117_104324.jpg",
+    "4_Rocnik/Pocitacove_site/20251114_134409.jpg",
+    "4_Rocnik/Pocitacove_site/20251114_132952.jpg",
+    "Maturita/Maturitni_prace/Martin Novan Ročníková práce finální termín.pdf",
+    "Maturita/Informatika/Obrazky/Graph_DFS_cyckle_diff.png",
+    "3_Rocnik/Matematika/Obrazky/vektorovy_soucin_matice.png",
+    "3_Rocnik/Matematika/20251031_154622.jpg",
+    "3_Rocnik/Matematika/20251031_154539.jpg",
+    "3_Rocnik/Matematika/20251031_154529.jpg",
+    "3_Rocnik/Informatika/Materiály/20251031_154652.jpg"
   ]
 }

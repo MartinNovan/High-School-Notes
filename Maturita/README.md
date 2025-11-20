@@ -5,4 +5,4 @@ Vše potřebné k maturitě – seznamy četby, rozbory knih, materiály k matem
 - [Čeština](./Cestina/README.md) – Materiály k ústní části, rozbory knih, seznam četby.
 - [Informatika](./Informatika/README.md) - Teorie z informatiky
 - [Matematika](./Matematika/README.md) – Materiály k maturitě z matematiky. ➗
-- [Maturitní práce](0_Maturitni_prace/README.md) – Ročníkové práce a podklady. 📄
+- [Maturitní práce](Maturitni_prace/README.md) – Ročníkové práce a podklady. 📄

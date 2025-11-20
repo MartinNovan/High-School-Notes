@@ -34,6 +34,7 @@
 #### Národní kultura a literatura
 - **Národní literatura** je literatura psaná národním jazykem. Pod pojmem česká národní literatura chápeme literární díla napsaná v českém Jazyce. Součástí národní literatury je také tvorba autorů, kteří píšou česky, ačkoli žijí v zahraničí (např. spisovatel českého původu Milan Kundera, který dnes píše své romány francouzsky a literární eseje česky). K národní literatuře patří i díla autora-cizince píšícího česky. **Národní jazyk**, český jazyk, **má několik útvarů**. Rozlišujeme **spisovnou** a **hovorovou** **češtinu, obecnou češtinu a dialekty** (nářečí), **slangy, argot a profesní mluvu**. Ze všech těchto rovin českého jazyka může autor čerpat jazykový materiál při vytváření svého literárního díla. Tím dodá dílu osobitý charakter a vykreslí atmosféru určitého území nebo prostředí.
 ## Teorie literatury
+
 ### Literatura a její druhy a žánry
 - Literatura 
 	- (z lat. **littera** - písmeno) je souborem textů, ti. všech existujících písemně zaznamenaných jazykových projevů lidstva. V minulosti byla literatura chápána jako veškeré umění číst a psát. V současnosti je za literaturu považována převážně literatura umělecká (imaginativní slovesná tvorba a beletrie).

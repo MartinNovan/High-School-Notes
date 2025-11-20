@@ -2022,7 +2022,7 @@ public static TreeNode Delete(TreeNode node, string data)
 - ![](Obrazky/Graph_undirected_adjacency_matrix.png)
 - Pro uložení dat pro každý vrchol, v tomto případě písmena A, B, C a D, se data umístí do samostatného pole, které odpovídá indexům v matici sousednosti, takto:
 - `vertexData = [ 'A', 'B', 'C', 'D']`
-- U neorientovaného a neváženého grafu, jako na obrázku výše, je hrana mezi vrcholy `i` a `j` uložena s hodnotou `1`. Je uložena jako `1` na obou místech `(j,i)` a `(i,j)`, protože hrana vede v obou směrech. Jak vidíte, matice se u takových neorientovaných grafů stává diagonálně symetrickou.
+- U neorientovaného a neváženého grafu, jako na obrázku výše, je hrana mezi vrcholy `i` a `j` uložena s hodnotou `1`. Je uložena jako `1` na obou místech `(j,i)` a `(i,j)`, protože hrana vede v obou směrech. Jak vidíte, matice se u takových ne-směrových grafů stává diagonálně symetrickou.
 - Podívejme se na něco konkrétnějšího. Ve výše uvedené sousední matici je vrchol A na indexu `0` a vrchol D na indexu `3`, takže hranu mezi A a D uložíme jako hodnotu `1` na pozici `(0,3)` a `(3,0)`, protože hrana vede v obou směrech.
 - Níže je uvedena základní implementace neorientovaného grafu z obrázku výše.
 ```csharp
@@ -2169,7 +2169,7 @@ class Program
     }
 }
 ```
-#### Implementace orientovaných a vážených grafů
+#### Implementace směrových a vážených grafů
 - K implementaci orientovaného a váženého grafu stačí provést několik změn v předchozí implementaci neorientovaného grafu.
 - K vytvoření orientovaného grafu stačí odstranit řádek 10 v předchozím příkladu kódu, aby matice již nebyla automaticky symetrická.
 - Druhou změnou, kterou musíme provést, je přidání argumentu `weight` do metody `add_edge()`, aby místo hodnoty `1`, která označuje, že mezi dvěma vrcholy existuje hrana, použili jsme k definování hrany skutečnou hodnotu váhy.
@@ -2415,7 +2415,7 @@ public void BFS(string startVertexData)
 }
 ```
 ###### Procházení orientovaného grafu metodami DFS a BFS
-- Procházení do hloubky a do šířky lze ve skutečnosti implementovat tak, aby fungovaly na orientovaných grafech (namísto neorientovaných) s pouze velmi malými změnami.
+- Procházení do hloubky a do šířky lze ve skutečnosti implementovat tak, aby fungovaly na směrových grafech (namísto ne-směrových) s pouze velmi malými změnami.
 - Spusťte níže uvedenou animaci a podívejte se, jak lze orientovaný graf procházet pomocí DFS nebo BFS.
 - ![](Obrazky/Graph_directed_DFS_and_BFS.gif)
 - Abychom mohli procházet orientovaný graf namísto neorientovaného grafu, stačí odstranit poslední řádek v metodě `add_edge()`:
@@ -2566,7 +2566,374 @@ class Program
 }
 ```
 #### Detekce zacyklení 
+###### Cykly v grafu
+- Cyklus v grafu je cesta, která začíná a končí ve stejném vrcholu, kde se žádné hrany neopakují. Je to podobné jako procházení bludištěm a skončení přesně tam, kde jste začali.
+- ![](Obrazky/Graph_cycle_DFS.gif)
+- Cyklus lze definovat mírně odlišně v závislosti na situaci. Například vlastní smyčka, kde hrana vede ze stejného vrcholu a do stejného vrcholu, může být nebo nemusí být považována za cyklus, v závislosti na problému, který se snažíte vyřešit.
+###### Detekce zacyklení
+- Je důležité umět detekovat cykly v grafech, protože cykly mohou naznačovat problémy nebo zvláštní podmínky v mnoha aplikacích, jako jsou sítě, plánování a návrh obvodů.
+- Dva nejběžnější způsoby detekce cyklů jsou:
+	- **Hloubkové prohledávání (DFS)**: Prohledávání DFS prozkoumá graf a označí vrcholy jako navštívené. Cyklus je detekován, když má aktuální vrchol sousední vrchol, který již byl navštíven.
+	- **Union-Find**: Tento způsob funguje tak, že nejprve definuje každý vrchol jako skupinu nebo podmnožinu. Poté se tyto skupiny spojí pro každou hranu. Kdykoli je prozkoumána nová hrana, je detekován cyklus, pokud dva vrcholy již patří do stejné skupiny.
+- Jak funguje detekce cyklů pomocí DFS a Union-Find a jak jsou implementovány, je podrobněji vysvětleno níže.
+######  DFS detekce zacyklení pro ne-směrové grafy
+- K detekci cyklů v neorientovaném grafu pomocí hloubkového prohledávání (DFS) používáme kód velmi podobný kódu pro procházení DFS, s několika málo změnami.
+- Jak to funguje:
+	- Spusťte procházení DFS na každém nenavštíveném vrcholu (v případě, že graf není propojený).
+	- Během DFS označte vrcholy jako navštívené a spusťte DFS na sousedních vrcholech (rekurzivně).
+	- Pokud je sousední vrchol již navštívený a není rodičem aktuálního vrcholu, je detekován cyklus a je vrácena hodnota `true`.
+	- Pokud je průchod DFS proveden na všech vrcholech a nejsou detekovány žádné cykly, je vrácena hodnota `false`.
+- Spusťte animaci níže a podívejte se, jak detekce cyklů DFS funguje na konkrétním grafu, počínaje vrcholem A (stejně jako v předchozí animaci).
+- ![](Obrazky/Graph_cycle_DFS.gif)
+- Procházení DFS začíná ve vrcholu A, protože to je první vrchol v matici sousednosti. Poté se pro každý nový navštívený vrchol rekurzivně volá metoda procházení na všech sousedních vrcholech, které ještě nebyly navštíveny. Cyklus je detekován při návštěvě vrcholu F, kdy se zjistí, že sousední vrchol C již byl navštíven.
+```csharp
+public class Graph
+{
+    private int[,] adjMatrix; // Matice sousednosti (0 = žádná hrana, 1 = hrana)
+    private string[] vertexData; // Pole dat uložených ve vrcholech (např. A, B, C...)
+    private int size; // Počet vrcholů grafu
+    
+    public Graph(int size)
+    {
+        this.size = size; // Nastavení velikosti grafu
+        adjMatrix = new int[size, size]; // Inicializace matice sousednosti
+        vertexData = new string[size]; // Inicializace pole dat vrcholů
+    }
+    // Přidá neorientovanou hranu mezi vrcholy u a v
+    public void AddEdge(int u, int v)
+    {
+        if (u >= 0 && u < size && v >= 0 && v < size) // Ověření rozsahu indexů
+        {
+            adjMatrix[u, v] = 1; // Hrana u -> v
+            adjMatrix[v, u] = 1; // Hrana v -> u (neorientovaný graf)
+        }
+    }
+    // Uloží textovou hodnotu pro daný vrchol
+    public void AddVertexData(int vertex, string data)
+    {
+        if (vertex >= 0 && vertex < size) // Ověření, že vrchol je platný
+        {
+            vertexData[vertex] = data; // Uložení dat
+        }
+    }
+    // Vypíše celou matici sousednosti a data vrcholů
+    public void PrintGraph()
+    {
+        Console.WriteLine("Adjacency Matrix:");
 
+        for (int i = 0; i < size; i++) // Pro každý řádek matice
+        {
+            for (int j = 0; j < size; j++) // Pro každý sloupec matice
+            {
+                Console.Write(adjMatrix[i, j] + " "); // Výpis hodnoty
+            }
+            Console.WriteLine(); // Nový řádek
+        }
+        Console.WriteLine("\nVertex Data:");
+        for (int i = 0; i < size; i++) // Výpis dat jednotlivých vrcholů
+        {
+            Console.WriteLine($"Vertex {i}: {vertexData[i]}");
+        }
+    }
+    // Rekurzivní DFS pro detekci cyklu
+    private bool DfsUtil(int v, bool[] visited, int parent)
+    {
+        visited[v] = true; // Označí aktuální vrchol jako navštívený
+        for (int i = 0; i < size; i++) // Pro všechny možné sousedy vrcholu v
+        {
+            if (adjMatrix[v, i] == 1) // Pokud existuje hrana v -> i
+            {
+                if (!visited[i]) // Pokud soused ještě nebyl navštíven
+                {
+                    if (DfsUtil(i, visited, v)) // Rekurze — pokračujeme dál
+                        return true; // Pokud byla nalezena smyčka, vracíme true
+                }
+                else if (i != parent) // Pokud byl navštíven a není to rodič
+                {
+                    return true; // Našli jsme cyklus
+                }
+            }
+        }
+        return false; // Není zde žádný cyklus
+    }
+    // Spouští DFS z každého neprozkoumaného vrcholu
+    public bool IsCyclic()
+    {
+        bool[] visited = new bool[size]; // Pole označující navštívené vrcholy
+        for (int i = 0; i < size; i++) // Projdi všechny vrcholy (kvůli více komponentám)
+        {
+            if (!visited[i]) // Pokud vrchol ještě nebyl navštíven
+            {
+                if (DfsUtil(i, visited, -1)) // Spustíme DFS (rodič -1 = žádný)
+                    return true; // Cyklus existuje
+            }
+        }
+        return false; // Žádný cyklus nebyl nalezen
+    }
+}
+// Použití grafu
+public class Program
+{
+    public static void Main()
+    {
+        Graph g = new Graph(7); // Vytvoření grafu o 7 vrcholech
+        
+        g.AddVertexData(0, "A"); // Přiřazení písmen vrcholům
+        g.AddVertexData(1, "B");
+        g.AddVertexData(2, "C");
+        g.AddVertexData(3, "D");
+        g.AddVertexData(4, "E");
+        g.AddVertexData(5, "F");
+        g.AddVertexData(6, "G");
+        
+        g.AddEdge(3, 0);  // D - A
+        g.AddEdge(0, 2);  // A - C
+        g.AddEdge(0, 3);  // A - D
+        g.AddEdge(0, 4);  // A - E
+        g.AddEdge(4, 2);  // E - C
+        g.AddEdge(2, 5);  // C - F
+        g.AddEdge(2, 1);  // C - B
+        g.AddEdge(2, 6);  // C - G
+        g.AddEdge(1, 5);  // B - F
+        
+        g.PrintGraph(); // Výpis grafu
+        
+        Console.WriteLine("\nGraph has cycle: " + g.IsCyclic()); // Detekce cyklu
+    }
+}
+```
+######  DFS detekce zacyklení pro směrové grafy
+- Pro detekci cyklů ve směrových grafech je algoritmus velmi podobný jako u ne-směrových grafů, ale kód musí být mírně upraven, protože ve směrovém grafu nemusí návštěva sousedního uzlu, který již byl navštíven, nutně znamenat, že existuje cyklus.
+- Podívejme se na následující graf, ve kterém jsou prozkoumány dvě cesty s cílem detekovat cyklus:
+- ![](Obrazky/Graph_DFS_cyckle_diff.png)
+- V cestě 1, první prozkoumané cestě, jsou navštíveny vrcholy A->B->C, nejsou detekovány žádné cykly.
+- Ve druhé prozkoumané cestě (cesta 2) jsou navštíveny vrcholy D->B->C a cesta nemá žádné cykly, že? Ale bez změn v našem programu by byl při přechodu z D do sousedního vrcholu B detekován falešný cyklus, protože B již byl navštíven v cestě 1. Aby se předešlo takovým falešným detekcím, je kód upraven tak, aby detekoval cykly pouze v případě, že uzel již byl navštíven ve stejné cestě.
+- ![](Obrazky/Graph_directed_cycle_DFS.gif)
+- Abychom mohli implementovat detekci cyklů DFS na směrovém grafu, jako v animaci výše, musíme odstranit symetrii, kterou máme v sousední matici pro neorientované grafy. Musíme také použít pole recStack, abychom mohli sledovat navštívené vrcholy v aktuální rekurzivní cestě.
+```csharp
+public class Graph
+{
+    private int[,] adjMatrix; // Matice sousednosti (1 = orientovaná hrana)
+    private string[] vertexData; // Data vrcholů (A, B, C...)
+    private int size; // Počet vrcholů
+    
+    public Graph(int size)
+    {
+        this.size = size;                         
+        adjMatrix = new int[size, size]; // Inicializace matice sousednosti
+        vertexData = new string[size]; // Inicializace dat vrcholů
+    }
+    // Přidá ORIENTOVANOU hranu u -> v
+    public void AddEdge(int u, int v)
+    {
+        if (u >= 0 && u < size && v >= 0 && v < size) // Kontrola rozsahu
+        {
+            adjMatrix[u, v] = 1; // Jednosměrná hrana
+        }
+    }
+    // Uloží textová data vrcholu
+    public void AddVertexData(int vertex, string data)
+    {
+        if (vertex >= 0 && vertex < size)
+        {
+            vertexData[vertex] = data; // Uloží jméno vrcholu
+        }
+    }
+    // Vypíše celou matici + data vrcholů
+    public void PrintGraph()
+    {
+        Console.WriteLine("Adjacency Matrix:");
+        for (int i = 0; i < size; i++)                  
+        {
+            for (int j = 0; j < size; j++)             
+            {
+                Console.Write(adjMatrix[i, j] + " "); // Výpis matice
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine("\nVertex Data:");
+        for (int i = 0; i < size; i++)
+        {
+            Console.WriteLine($"Vertex {i}: {vertexData[i]}");
+        }
+    }
+    
+    // DFS pomocná funkce – hledání cyklu v ORIENTOVANÉM grafu
+    private bool DfsUtil(int v, bool[] visited, bool[] recStack)
+    {
+        visited[v] = true; // Vrchol byl navštíven
+        recStack[v] = true; // Vrchol je v aktuální rekurzivní cestě
+        
+        Console.WriteLine("Current vertex: " + vertexData[v]);
+        
+        for (int i = 0; i < size; i++) // Pro všechny sousedy vrcholu v
+        {
+            if (adjMatrix[v, i] == 1) // Existuje hrana v -> i
+            {
+                if (!visited[i]) // Ještě nebyl navštíven
+                {
+                    if (DfsUtil(i, visited, recStack))
+                        return true; // Nalezen cyklus
+                }
+                else if (recStack[i]) // Vrchol je v rekurzivní zásobníku
+                {
+                    return true; // Cyklus detekován
+                }
+            }
+        }
+        recStack[v] = false; // Vrchol opouštíme → již není v cestě
+        return false; // Cyklus z této větve neexistuje
+    }
+    // Hlavní funkce — detekce cyklu v grafu
+    public bool IsCyclic()
+    {
+        bool[] visited = new bool[size]; // Pole navštívených vrcholů
+        bool[] recStack = new bool[size]; // Vrcholy v aktuální DFS cestě
+        
+        for (int i = 0; i < size; i++)       
+        {
+            if (!visited[i]) // Pro každý neprozkoumaný vrchol
+            {
+                Console.WriteLine(); // Nový řádek pro přehlednost
+                if (DfsUtil(i, visited, recStack))
+                    return true; // Cyklus existuje
+            }
+        }
+        return false; // Žádný cyklus nenalezen
+    }
+}
+// Použití
+public class Program
+{
+    public static void Main()
+    {
+        Graph g = new Graph(7);
+        
+        g.AddVertexData(0, "A");
+        g.AddVertexData(1, "B");
+        g.AddVertexData(2, "C");
+        g.AddVertexData(3, "D");
+        g.AddVertexData(4, "E");
+        g.AddVertexData(5, "F");
+        g.AddVertexData(6, "G");
+        
+        g.AddEdge(3, 0);  // D -> A
+        g.AddEdge(0, 2);  // A -> C
+        g.AddEdge(2, 1);  // C -> B
+        g.AddEdge(2, 4);  // C -> E
+        g.AddEdge(1, 5);  // B -> F
+        g.AddEdge(4, 0);  // E -> A
+        g.AddEdge(2, 6);  // C -> G
+        
+        g.PrintGraph();
+        
+        Console.WriteLine("\nGraph has cycle: " + g.IsCyclic());
+    }
+}
+```
+###### Union-find detekce zacyklení
+- Detekce cyklů pomocí Union-Find se velmi liší od použití Depth First Search.
+- Detekce cyklů pomocí Union-Find funguje tak, že nejprve umístí každý uzel do své vlastní podmnožiny (jako do tašky nebo kontejneru). Poté se pro každou hranu sloučí podmnožiny patřící ke každému vrcholu. Pokud vrcholy hrany již patří do stejné podmnožiny, znamená to, že jsme našli cyklus.
+- ![](Obrazky/Graph_cycle_union_find.gif)
+- V animace výše detekce cyklů pomocí algoritmu Union-Find prozkoumává hrany v grafu. Jak jsou hrany prozkoumávány, podmnožina vrcholu A se rozšiřuje tak, aby zahrnovala také vrcholy B, C a D. Cyklus je detekován, když je prozkoumána hrana mezi A a D a je zjištěno, že A i D již patří do stejné podmnožiny.
+- Hrany mezi D, E a F také tvoří kruh, ale tento kruh není detekován, protože algoritmus se zastaví (vrátí hodnotu True), když je detekován první kruh.
+- Detekce cyklů pomocí Union-Find je použitelná pouze pro ne-směrové grafy.
+- Detekce cyklů pomocí Union-Find je implementována pomocí reprezentace sousední matice, takže nastavení struktury grafu s vrcholy a hranami je v zásadě stejné jako v předchozích příkladech.
+```csharp
+public class Graph
+{
+    private int[,] adjMatrix; // Matice sousednosti (neorientovaný graf)
+    private string[] vertexData; // Data vrcholů (A, B, C...)
+    private int[] parent; // Union-Find parent pole
+    private int size; // Počet vrcholů
+    
+    public Graph(int size)
+    {
+        this.size = size; // uloží velikost grafu
+        adjMatrix = new int[size, size]; // vytvoří matici sousednosti
+        vertexData = new string[size]; // pole dat vrcholů
+        parent = new int[size]; // pole pro Union-Find
+        for (int i = 0; i < size; i++)
+            parent[i] = i; // každý vrchol je zpočátku vlastním rodičem
+    }
+    public void AddEdge(int u, int v)
+    {
+        if (u >= 0 && v >= 0 && u < size && v < size)
+        {
+            adjMatrix[u, v] = 1; // nastaví hranu u→v
+            adjMatrix[v, u] = 1; // nastaví hranu v→u (neorientovaný graf)
+        }
+    }
+    public void AddVertexData(int vertex, string data)
+    {
+        if (vertex >= 0 && vertex < size)
+            vertexData[vertex] = data; // uloží textovou hodnotu vrcholu
+    }
+    private int Find(int i)
+    {
+        if (parent[i] == i)
+            return i; // pokud je rodičem sám sebe, je to kořen
+        return Find(parent[i]); // rekurzivně najde kořen
+    }
+    private void Union(int x, int y)
+    {
+        int rootX = Find(x); // najde kořen prvního vrcholu
+        int rootY = Find(y); // najde kořen druhého vrcholu
+        
+        Console.WriteLine($"Union: {vertexData[x]} + {vertexData[y]}"); // vypíše prováděné sjednocení
+        
+        parent[rootX] = rootY; // nastaví rodiče rootX na rootY
+        
+        Console.WriteLine(string.Join(",", parent)); // vypíše stav pole parent
+        Console.WriteLine(); // prázdný řádek
+    }
+    public bool IsCyclic()
+    {
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = i + 1; j < size; j++)
+            {
+                if (adjMatrix[i, j] == 1)
+                {
+                    int x = Find(i); // najde kořen vrcholu i
+                    int y = Find(j); // najde kořen vrcholu j
+                    if (x == y)
+                        return true; // pokud mají stejný kořen, vznikl cyklus
+                    Union(x, y); // sjednotí množiny
+                }
+            }
+        }
+        return false; // žádný cyklus nebyl nalezen
+    }
+}
+// Použití
+public class Program
+{
+    public static void Main()
+    {
+        Graph g = new Graph(7);
+
+        g.AddVertexData(0, "A");
+        g.AddVertexData(1, "B");
+        g.AddVertexData(2, "C");
+        g.AddVertexData(3, "D");
+        g.AddVertexData(4, "E");
+        g.AddVertexData(5, "F");
+        g.AddVertexData(6, "G");
+
+        g.AddEdge(1, 0);  // B - A
+        g.AddEdge(0, 3);  // A - D
+        g.AddEdge(0, 2);  // A - C
+        g.AddEdge(2, 3);  // C - D
+        g.AddEdge(3, 4);  // D - E
+        g.AddEdge(3, 5);  // D - F
+        g.AddEdge(3, 6);  // D - G
+        g.AddEdge(4, 5);  // E - F
+
+        Console.WriteLine("Graph has cycle: " + g.IsCyclic());
+    }
+}
+```
 #### **Použití:**
 - sociální sítě
 - navigace, mapy
