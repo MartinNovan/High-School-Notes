@@ -339,5 +339,5 @@
 	- Sečna s 1 průsečíkem (pokud je rovnoběžná s asymptotou) ->má jeden společný bod 
 ![Hyperbola_a_primka.png](./Obrazky/parabola_a_primka.png)
 
-> [!NOTE] Chybějící příklady
+> [!NOTE] Chybějící příklady pro parabolu
 > Příklady pro parabolu jsou identické jako pro hyperbolu, pouze s tím rozdílem, že používáme rovnici paraboly. Proto zde příklady nejsou ale postup lze nalézt výše.

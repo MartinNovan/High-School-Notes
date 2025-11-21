@@ -2,7 +2,6 @@
 Poznámky, materiály a úkoly z matematiky pro 4. ročník.
 
 ## 📂 Struktura složky
-- [00 Pětiminutovky](./00_Petiminutovky.md)
 - [01 Kuželosečky](./01_Kuzelosecky.md)
 - [02 Posloupnosti a řady](./02_Posloupnosti_a_rady.md)
 - [03 Finanční matematika](./03_Financni_matematika.md)

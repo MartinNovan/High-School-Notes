@@ -4,22 +4,34 @@
     "type": "split",
     "children": [
       {
-        "id": "5f840b680beebc8c",
+        "id": "09ce3eaaf8e60a8b",
         "type": "tabs",
         "children": [
           {
-            "id": "33e908221e8c2907",
+            "id": "d7c377ba05548ef9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1_Rocnik/Cesky_jazyk/Pracovni_listy/16_Jak_spravne_citovat.md",
+                "file": "Maturita/Informatika/02_Webove_aplikace.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "16_Jak_spravne_citovat"
+              "title": "02_Webove_aplikace"
+            }
+          },
+          {
+            "id": "a1fea79485cc7ccb",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2025-11-21 22.33.32.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2025-11-21 22.33.32"
             }
           }
         ]
@@ -95,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Maturita/Cestina/Materialy/Knihy_PDF/README.md",
+                "file": "Maturita/Informatika/02_Webove_aplikace.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +117,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for README"
+              "title": "Backlinks for 02_Webove_aplikace"
             }
           },
           {
@@ -114,12 +126,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Maturita/Informatika/02_Webove_aplikace.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from README"
+              "title": "Outgoing links from 02_Webove_aplikace"
             }
           },
           {
@@ -143,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1_Rocnik/Cesky_jazyk/Pracovni_listy/16_Jak_spravne_citovat.md",
-                "followCursor": false,
+                "file": "Maturita/Informatika/02_Webove_aplikace.md",
+                "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 16_Jak_spravne_citovat"
+              "title": "Outline of 02_Webove_aplikace"
             }
           }
         ],
@@ -173,53 +185,53 @@
       "markdown-importer:Open format converter": false
     }
   },
-  "active": "33e908221e8c2907",
+  "active": "d7c377ba05548ef9",
   "lastOpenFiles": [
-    "1_Rocnik/Cesky_jazyk/00_Literatura_ucebnice_1.pdf",
-    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/bud_panem_sveho_prostoru.pdf",
-    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/Admin 4.0 brozura.pdf",
-    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/Bezpecne_v_cyber_brozura.pdf",
-    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/jak_na_internet_bezpecne (1).pdf",
-    "1_Rocnik/Kyberneticka_bezpecnost/Materiály/1D_KYB_pojmy.pdf",
-    "1_Rocnik/Cesky_jazyk/01_Uvod_do_studia_literatury.md",
-    "Maturita/Informatika/01_Datove_struktury.md",
+    "Maturita/Informatika/Obrazky/Web_app_responsive.gif",
+    "Maturita/Informatika/Obrazky/Nepotvrzeno 921547.crdownload",
+    "Pasted image 20251122002141.png",
+    "Pasted image 20251121235221.png",
+    "Pasted image 20251121234414.png",
+    "Maturita/Informatika/Obrazky/Web_app_branches.png",
     "Maturita/Informatika/02_Webove_aplikace.md",
-    "Maturita/Informatika/03_Databazove_systemy.md",
-    "Maturita/Informatika/05_Datove_typy.md",
-    "Maturita/Informatika/04_GUI_aplikace.md",
-    "Maturita/Informatika/06_Strukturovane_programovani.md",
+    "Maturita/Informatika/Obrazky/Web_app_Github_desktop.png",
+    "Maturita/Informatika/Obrazky/Web_app_pull_req.png",
+    "Excalidraw/Drawing 2025-11-21 22.33.32.md",
+    "Excalidraw/Drawing 2025-11-21 19.21.46.md",
+    "Maturita/Informatika/Obrazky/Web_app_repository.png",
+    "Maturita/Informatika/Obrazky/Web_app_commit.png",
+    "Web_app_Repository.png",
+    "Pasted image 20251121192005.png",
+    "1_Rocnik/Elektrotechnika/04_Elektricke_obvody.md",
+    "4_Rocnik/Matematika/20251023104925.pdf",
+    "4_Rocnik/Matematika/04_Vlastnosti_posloupnosti.md",
+    "Maturita/Informatika/01_Datove_struktury.md",
+    "4_Rocnik/Matematika/01_Kuzelosecky.md",
+    "4_Rocnik/Matematika/03_Financni_matematika.md",
+    "4_Rocnik/Matematika/02_Posloupnosti_a_rady.md",
+    "1_Rocnik/Matematika/09_Ostatni_rovnice_a_nerovnice.md",
+    "2_Rocnik/Matematika/Zápisy/Matematika sešit.pdf",
+    "2_Rocnik/Matematika/Zápisy/00_Pracovní_sešit_4.pdf",
+    "2_Rocnik/Matematika/Zápisy/00_Pracovní_sešit_6.pdf",
+    "2_Rocnik/Matematika/Zápisy/00_Pracovní_sešit_5.pdf",
+    "4_Rocnik/Matematika/README.md",
+    "4_Rocnik/Automatizace/00_Schématické_značky.md",
+    "4_Rocnik/Matematika/00_Petiminutovky.md",
+    "4_Rocnik/Matematika/00_Pluska.md",
+    "1_Rocnik/Informatika/README.md",
+    "4_Rocnik/Mikroprocesorova_technika/Arduin/Led_switching/obvod_arduino_tlacitko_5_led_input_pullup.md",
+    "4_Rocnik/Mikroprocesorova_technika/Arduin",
+    "OneDrive_2025-11-20/OPS/02GNULinux_GUI_N.pdf",
+    "4_Rocnik/Mikroprocesorova_technika/Arduin/Semafor/Semafor.ino",
+    "4_Rocnik/Mikroprocesorova_technika/Arduin/Semafor",
+    "4_Rocnik/Mikroprocesorova_technika/Arduin/libraries/STM32duino_ASM330LHH/README.md",
     "1_Rocnik/Cesky_jazyk/README.md",
-    "1_Rocnik/Cesky_jazyk/Pracovni_listy/01_Literarni_druhy_a_zanry_literarni_formy.md",
-    "1_Rocnik/Cesky_jazyk/Pracovni_listy",
-    "Maturita/README.md",
-    "README.md",
-    "Maturita/Informatika/08_Rozdeleni_aplikaci_a_softwarove_licence.md",
-    "Maturita/Informatika/09_Tabulkove_procesory.md",
-    "Maturita/Informatika/11_Vektorova_grafika.md",
-    "Maturita/Informatika/12_Rastrova_grafika.md",
-    "Maturita/Informatika/13_Navrh_LAN_siti.md",
-    "Maturita/Informatika/10_Cloudove_aplikace.md",
-    "Maturita/Informatika/07_Objektove_orientovane_programovani.md",
-    "4_Rocnik/Cesky_jazyk/Otázky_Test.md",
-    "4_Rocnik/Cesky_jazyk/05_Uvahovy_text.md",
-    "4_Rocnik/Dejepis/01_Uvod_do_dejepisu.md",
-    "4_Rocnik/Dejepis/03_Vikingove.md",
-    "4_Rocnik/Dejepis/06_Utecte_ze_zelare.md",
-    "4_Rocnik/Kyberneticka_bezpecnost/02_Odstraneni_viru_OS.md",
-    "4_Rocnik/Kyberneticka_bezpecnost/01_Zavadeni_OS.md",
-    "4_Rocnik/Mikroprocesorova_technika/20251114_092236.jpg",
-    "2_Rocnik/Cislicova_technika/Zápisy/zápisky.pdf",
-    "2_Rocnik/Cislicova_technika/Zápisy/01_Ukol_Novan.pdf",
-    "1_Rocnik/Pracovní_sešit.pdf",
-    "1_Rocnik/Matematika/20251117_104324.jpg",
-    "4_Rocnik/Pocitacove_site/20251114_134409.jpg",
-    "4_Rocnik/Pocitacove_site/20251114_132952.jpg",
-    "Maturita/Maturitni_prace/Martin Novan Ročníková práce finální termín.pdf",
-    "Maturita/Informatika/Obrazky/Graph_DFS_cyckle_diff.png",
-    "3_Rocnik/Matematika/Obrazky/vektorovy_soucin_matice.png",
-    "3_Rocnik/Matematika/20251031_154622.jpg",
-    "3_Rocnik/Matematika/20251031_154539.jpg",
-    "3_Rocnik/Matematika/20251031_154529.jpg",
-    "3_Rocnik/Informatika/Materiály/20251031_154652.jpg"
+    "3_Rocnik/README.md",
+    "1_Rocnik/Informatika/05_Uchovani_dat_v_pameti.md",
+    "1_Rocnik/Informatika/01_Informatika_uvod.md",
+    "1_Rocnik/Informatika/04_Mnoziny.md",
+    "1_Rocnik/Informatika/02_Programovaci_jazyky.md",
+    "1_Rocnik/Informatika/06_Uvod_do_algoritmu.md",
+    "1_Rocnik/README.md"
   ]
 }

@@ -10,7 +10,17 @@
 - výroková logika
 	- zápis do pravdivostní tabulky
 		- A, B - vstupy (zpravidla od začátku abecedy)
-		- ==Dopsat==
+		- Y - výstup/výstupy (zpravidla od konce abecedy)
+		- počet řádků -> $2^n$ ($n$ je počet vstupních proměnných)
+		- 
+
+| A   | B   | Y   |
+| --- | --- | --- |
+| 0   | 0   |     |
+| 0   | 1   |     |
+| 1   | 0   |     |
+| 1   | 1   |     |
+
 - Pro popis kombinačního a sekvenčního logického obvodu
 	- Kombinační obvod
 		- ![Kombinacni obvod](Obrazky/kombinacni_obvod.png)
@@ -30,32 +40,5 @@
 		- 
 - Základní zákony booleovy algebry:
 	- And, Or, Not + Nand, Nor, Xor, Xnor
-	- 
+	- ![](Obrazky/Zakladni_zakony_bool_alg.png)
 
-
-
-
-
-|     |     | A   | AB  | B   |
-| --- | --- | --- | --- | --- |
-|     | 0   | 1   | 0   | 1   |
-| c   | 0   | 0   | 0   | 1   |
-| cd  | 0   | 1   | 0   | 0   |
-| d   | 1   | 1   | 0   | 0   |
-
-A_B_C + _AB_D + A_BD + _B_CD
-
-
-
-
-
-
-
-
-
-
-
-
-
-![](../../Pasted%20image%2020251119145555.png)
-Výsledek -> BD

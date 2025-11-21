@@ -121,7 +121,8 @@
 #### Základní elektrické měření: 
 1. k čemu slouží multimetr? 
 2. k čemu slouží u multimetru svorka „COM“? 
-3. jaké svorky použijete a jakou barvu vodičů pro měření napětí? (viz. obrázek) ![[Pasted image 20251020122112.png]]
+3. jaké svorky použijete a jakou barvu vodičů pro měření napětí? (viz. obrázek) 
+	- ![[Pasted image 20251020122112.png]]
 4. jaké svorky použijete a jakou barvu vodičů pro měření proudu? 
 5. jaké svorky použijete a jakou barvu vodičů pro měření odporu? 
 6. ampérmetr se zapojuje s měřeným spotřebičem _____________ . (sériově / paralelně?) 
@@ -131,9 +132,16 @@
 10. „zdroj je zapojen naprázdno“: a. co je k němu připojeno + situace v praxi? b. jaké je výstupní napětí vzhledem k hodnotě na štítku? c. jaký je výstupní proud? 
 11. „ke zdroji je připojen spotřebič“: a. co je k němu připojeno + situace v praxi? b. jaké je výstupní napětí vzhledem k hodnotě na štítku? c. jaký je výstupní proud? 
 12. „zdroj je zapojen nakrátko“: a. co je k němu připojeno + situace v praxi? b. jaké je výstupní napětí vzhledem k hodnotě na štítku? c. jaký je výstupní proud? 
-13. do schématu dokreslete, kam zapojit Ametr a Vmetr (+ označte také svorky přístrojů a barvy vodičů)![[Pasted image 20251020122152.png]]
-14. dokreslete do schématu, jak jsou zapojené 4 žárovky v lustru (všechny se najednou zapínají jedním vypínačem) ![[Pasted image 20251020122215.png]]
-15. dokreslete do schématu, jak jsou zapojené 4 žárovky na 2 okruhy (na dvojitý vypínač) po 2 žárovkách ![[Pasted image 20251020122237.png]]
-16. požadovaná činnost el. obvodu: po zapnutí vypínače bude jedna žárovka svítit stále (Z1) a druhá jen při stisknutém tlačítku (Z2); voltmetr ukazuje připojené napětí a ampérmetr proud skrz jednu žárovku a. ve schématu jsou chyby, najděte je a označte b. na pravou stranu nakreslete správné schéma podle požadované činnosti![[Pasted image 20251020122302.png]]
-17. v tomto paralelním spojení žárovky, rezistoru (topná spirála) a motoru popište jaké je kde napětí a jaký kde teče proud (I1, I2, I3); čemu se rovná výsledný proud a výsledné napětí? ![[Pasted image 20251020122324.png]]
-18. v tomto sériovém spojení žárovky, rezistoru (topná spirála) a motoru popište jaké je kde napětí (U1, U2, U3) a jaký kde teče proud; čemu se rovná výsledný proud a výsledné napětí?![[Pasted image 20251020122336.png]]
+13. do schématu dokreslete, kam zapojit Ametr a Vmetr (+ označte také svorky přístrojů a barvy vodičů)
+	- ![[Pasted image 20251020122152.png]]
+14. dokreslete do schématu, jak jsou zapojené 4 žárovky v lustru (všechny se najednou zapínají jedním vypínačem) 
+	- ![[Pasted image 20251020122215.png]]
+15. dokreslete do schématu, jak jsou zapojené 4 žárovky na 2 okruhy (na dvojitý vypínač) po 2 žárovkách 
+	- ![[Pasted image 20251020122237.png]]
+16. požadovaná činnost el. obvodu: po zapnutí vypínače bude jedna žárovka svítit stále (Z1) a druhá jen při stisknutém tlačítku (Z2); voltmetr ukazuje připojené napětí a ampérmetr proud skrz jednu žárovku a. ve schématu jsou chyby, najděte je a označte b. na pravou stranu nakreslete správné schéma podle požadované činnosti
+	- ![[Pasted image 20251020122302.png]]
+17. v tomto paralelním spojení žárovky, rezistoru (topná spirála) a motoru popište jaké je kde napětí a jaký kde teče proud (I1, I2, I3); čemu se rovná výsledný proud a výsledné napětí? 
+	- ![[Pasted image 20251020122324.png]]
+18. v tomto sériovém spojení žárovky, rezistoru (topná spirála) a motoru popište jaké je kde napětí (U1, U2, U3) a jaký kde teče proud; čemu se rovná výsledný proud a výsledné napětí?
+	- ![[Pasted image 20251020122336.png]]
+- 

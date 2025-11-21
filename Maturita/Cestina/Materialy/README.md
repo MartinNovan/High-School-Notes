@@ -1,2 +1,0 @@
-- [Knihy v PDF](./Knihy_PDF/README.md)
-- [Vypracované knihy](./Vypracovane_knihy/README.md)

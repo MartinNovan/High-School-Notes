@@ -23,6 +23,7 @@
 		- $a_0=2700Kč$
 		- $n=6 let$
 		- $p=11$
+		- Dosadíme do vzorce $a_n=a_0(1+\frac{p}{100})^n$
 		- $a_6=2700(1+\frac{11}{100})^6=5050,11Kč$
 - příklad
 	- Jakou jistinu musíme vložit, aby jsme po 12 letech měli při úroku 9% na účtě 100 000 Kč
@@ -30,20 +31,22 @@
 		- $a_{12}=100000Kč$
 		- $n=12let$
 		- $p=9$
-		- $a_0=\frac{a_n}{(1+\frac{p}{100})n}=\frac{100000}{(1+\frac{9}{100})12}=35553Kč$
+		- Dosadíme do vzorce $a_0=\frac{a_n}{(1+\frac{p}{100})n}$
+		- $a_0=\frac{100000}{(1+\frac{9}{100})12}=35553Kč$
 - příklad
 	- Za jak dlouho se jistina zdvojnásobí při 8% a kolik při 12%
 	- Postup
 		- Při 8%
-			- a
+			- ==Dopsat==
 		- Při 12%
-			- a
+			- ==Dopsat==
 - příklad
 	- Kolik nastřádáme za 10 let při úrocích 10% když pokaždé vložíme 6000 Kč
 	- Postup
 		- $n=10let$
 		- $p=10$
 		- $a=6000Kč$
+		- Dosadíme do vzorce $a_n=a(r\cdot\frac{r^n-1}{r-1})$ kde $r=(1+\frac{p}{100})$
 		- $r=1+\frac{p}{100}=1+\frac{10}{100}=1,1$
 		- $a_{10}=6000(1.1\cdot\frac{1.1^{10}-1}{1.1-1})=105187Kč$
 - Příklad
@@ -52,14 +55,18 @@
 		- $n=6let$
 		- $s=8000Kč$
 		- $p=14$
-		- $8000=K(1.14^6\cdot\frac{1,14-1}{1.14^6-1})=31109.30Kč$
+		- Dosadíme do vzorce $K=\frac{s}{r^{n}\cdot\frac{r-1}{r^{n}-1}}$ kde $r=(1+\frac{p}{100})$
+		- $K=\frac{8000}{1.14^6\cdot\frac{1,14-1}{1.14^6-1}}=>31109.30Kč$
 - Příklad
 	- Jak veliká musí být anuita placená koncem období, abychom dluh 270 000 splatili za 4 roky při 16% p.a.?
-	- $n=4let$
-	- $K=270000Kč$
-	- $p=16$
-	- $s=270000(1.16^4\cdot\frac{1,16-1}{1.16^4-1})=96491.20Kč$
+	- Postup
+		- $n=4let$
+		- $K=270000Kč$
+		- $p=16$
+		- Dosadíme do vzorce $s=K(r^n\cdot\frac{r-1}{r^n-1})$ kde $r=(1+\frac{p}{100})$
+		- $s=270000(1.16^4\cdot\frac{1,16-1}{1.16^4-1})=96491.20Kč$
 - Příklad
 	- Za jak dlouho splatíme dluh 90 000 Kč při 14.5% p.a. ročními anuitami 14 000Kč placenými koncem období?
 	- $n=19.869let$
-- 
+- Příklad
+	- 

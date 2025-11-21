@@ -2951,3 +2951,6 @@ public class Program
 ---
 ## Shrnutí
 Datové struktury jsou základem efektivního programování. Umožňují ukládat data tak, aby s nimi algoritmy pracovaly co nejrychleji. Každá struktura má své výhody a nevýhody, a proto je důležité vybrat tu správnou podle konkrétního problému. Porozumění datovým strukturám je klíčové pro psaní optimalizovaného a kvalitního kódu.
+
+## Zdroje
+- W3Schools. (n.d.). _DSA Tutorial_. Retrieved November 20, 2025, from [https://www.w3schools.com/dsa/index.php](https://www.w3schools.com/dsa/index.php?utm_source=chatgpt.com)

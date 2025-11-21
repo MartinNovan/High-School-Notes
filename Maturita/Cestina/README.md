@@ -1,5 +1,6 @@
 - [00 Tabulka a teorie](./00_Tabulka_a_teorie.md)
-- [Materiály - Knihy a rozbory](./Materialy/README.md)
+- [Knihy v PDF](./Knihy_PDF/README.md)
+- [Vypracované knihy](./Vypracovane_knihy/README.md)
 # Rozbor 20 knih
 ## Konec 18. století
 1. [Lakomec](./01_Lakomec.md)

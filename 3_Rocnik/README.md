@@ -8,5 +8,4 @@ Poznámky, materiály a úkoly z jednotlivých předmětů třetího ročníku.
 - [Matematika](./Matematika/README.md) – Poznámky z matematiky. ➗
 - [Mikroprocesorová technika](./Mikroprocesorova_technika/README.md) – Materiály z mikroprocesorové techniky. 🖲️
 - [Multimediální software](./Multimedialni_software/README.md) – Poznámky z multimediálního softwaru. 🎬
-- [Občanská nauka](./Obcanska_nauka/README.md) – Materiály z občanské nauky. 📜
 - [Vývoj aplikací](./Vyvoj_aplikaci/README.md) – Poznámky z vývoje aplikací. 📱
