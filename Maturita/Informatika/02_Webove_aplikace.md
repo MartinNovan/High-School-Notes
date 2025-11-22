@@ -396,6 +396,7 @@ Je důležité pochopit, že HTML není programovací jazyk. Je to **značkovac�
 - Soustřeďte se výhradně na korektní sémantickou strukturu. Vizuální stránkou se budeme zabývat v následující kapitole o CSS.
 
 - Příklad:
+`soubor: index.html`
 ```html
 <html lang="cs"><head>
     <meta charset="UTF-8">
@@ -659,7 +660,8 @@ $$\text{Celková šířka} = \text{šířka} + \text{padding-left} + \text{paddi
 	4. **Responzivita:** Pomocí **@media query** zajistěte, že na mobilních zařízeních (pod 768px) se sloupce z bodu 3 změní na **jeden sloupec** (`width: 100%`).
 	5. **Přechod (Transition):** Přidejte jednoduchý `transition` na tlačítko nebo odkaz (např. při `hover` efektu).
 
-- příklad
+- Příklad
+`soubor: style.css`
 ```css
 /* 1. ZÁKLADNÍ NASTAVENÍ (RESET) */ 
 /* Zajišťuje, že se padding a border počítají dovnitř šířky elementu (border-box) */
@@ -779,6 +781,7 @@ a:hover {
 }
 ```
 
+`soubor: index.html`
 ```html
 <!DOCTYPE html>
 <html lang="cs">
@@ -841,70 +844,1313 @@ a:hover {
 ```
 - Vzhled:
 	- ![](../../Pasted%20image%2020251122002141.png)
-- Responsivita:
+- Responsivita animace:
 	- ![](Obrazky/Web_app_responsive.gif)
 
 ---
 ## UI/UX pro web
-- Přehled základních principů použitelnosti a vizuálního návrhu.
+- V předchozích kapitolách jsme se naučili, jak vytvořit strukturu stránky (HTML) a jak ji vizuálně nastylovat (CSS). Nyní se posuneme o úroveň výš. Nestačí, aby stránka *nějak* vypadala; musí také *skvěle fungovat* a být *příjemná na používání*.
+- To nás přivádí k disciplínám **UI** a **UX**.
+	* **UI (User Interface – Uživatelské rozhraní):** Je to, co uživatel **vidí**. Je to vizuální vrstva – rozložení, barvy, tlačítka, písmo. Je to "vzhled a dojem" (look and feel) aplikace. Náš `style.css` je v podstatě implementace UI.
+	* **UX (User Experience – Uživatelský prožitek):** Je to, jak se uživatel **cítí** při používání aplikace. Je navigace logická? Najde rychle, co hledá? Je proces objednávky bezproblémový? Je to celkový prožitek, který UI pomáhá utvářet.
+>[!Note] **Analogie:** 
+>Představte si auto. **UI** je barva laku, tvar palubní desky, materiál potahů a design tlačítek. **UX** je pocit z jízdy, snadnost, s jakou najdete ovládání klimatizace, a jistota, kterou cítíte při řízení. Můžete mít krásné auto (dobré UI), které se otřesně řídí (špatné UX). Naším cílem je obojí.
 ### Designové principy
-- Pravidla, která pomáhají tvořit přehledné uživatelské rozhraní.
+- Dobré UI/UX není náhoda; řídí se osvědčenými principy, které pomáhají uživateli dosáhnout cíle bez frustrace.
+	1.  **Konzistence (Consistency):**
+		- Nejdůležitější princip. Tlačítko "Odeslat" by mělo vypadat stejně na každé stránce. Navigace by měla být vždy na stejném místě. Konzistence buduje důvěru a snižuje "kognitivní zátěž" – uživatel se nemusí na každé stránce učit něco nového.
+	2.  **Hierarchie (Hierarchy):**
+		- Vizuální hierarchie říká uživateli, co je nejdůležitější. V HTML jsme to dělali sémanticky (`<h1>` je důležitější než `<h2>`). V CSS toho dosahujeme velikostí písma, tloušťkou (`font-weight`) nebo barvou. Uživatelovo oko musí být přirozeně vedeno k nejdůležitější akci (např. "Koupit nyní").
+	3.  **Zpětná vazba (Feedback):**
+		- Uživatel musí vždy vědět, co se děje.
+		    * Klikl na odkaz? Odkaz by měl změnit barvu (`:visited`).
+		    * Najíždí na tlačítko? Tlačítko by mělo reagovat (`:hover`).
+		    * Odeslal formulář? Musí vidět zprávu "Úspěšně odesláno" nebo "Chyba: E-mail je neplatný". Ticho je nejhorší UX.
+	4.  **Jednoduchost a srozumitelnost (Clarity):**
+		- Každý prvek na stránce by měl mít jasný účel. Pokud stránka vypadá přeplácaně, uživatel neví, co má dělat. Držte se pravidla: **"Don't make me think"** (Nenuťte mě přemýšlet).
+	5.  **Bílé místo (White Space):**
+		- Prostor *mezi* prvky (napsaný v CSS jako `margin` a `padding`) je stejně důležitý jako prvky samotné. Dává obsahu prostor "dýchat", zlepšuje čitelnost a pomáhá oddělovat logické celky.
 ### Barvy, kontrast, tón
-- Jak pracovat s barvami, aby byl web čitelný a příjemný.
+- Barvy nejsou jen dekorace; jsou to mocné nástroje komunikace.
+	* **Tón:** Volba barev nastavuje emocionální tón. Jasné, syté barvy působí energicky (vhodné pro startup nebo sport). Tlumené, tmavé tóny (jako v našem mini-projektu) působí profesionálně a technicky.
+	* **Barevná paleta:** Profesionální weby nepoužívají 20 různých barev. Drží se omezené palety. Běžné pravidlo je **60-30-10**:
+	    * **60 %** Primární barva (např. pozadí, hlavní plochy).
+	    * **30 %** Sekundární barva (např. hlavička, patička, karty).
+	    * **10 %** Akcentní barva (např. tlačítka, odkazy, důležité prvky).
+#### Kontrast a Přístupnost (Accessibility)
+- Nejdůležitější pravidlo při práci s barvami. **Kontrast** je rozdíl v jasu mezi textem a jeho pozadím.
+	* **Špatný kontrast** (např. světle šedé písmo na bílém pozadí) je nečitelný pro lidi se slabším zrakem a nepříjemný pro všechny ostatní.
+	* **Dobrý kontrast** (např. tmavě šedé písmo na bílém pozadí) je snadno čitelný.
+- Profesionální standardy (**WCAG** - Web Content Accessibility Guidelines) definují přesné poměry kontrastu, které musíte splnit. Vždy si své barevné kombinace kontrolujte v online nástrojích (hledejte "Contrast Checker"). Tím zajistíte, že váš web je **přístupný** pro co nejvíce lidí.
 ### Tvorba layoutu
-- Návrhové postupy pro organizaci prvků na stránce.
+- Než začneme psát kód, musíme vědět, *kam* prvky umístit.
+	1.  **Drátové modely (Wireframes):**
+		- Jsou to nízkoúrovňové (low-fidelity) náčrty – v podstatě "architektonický plán" webu. Soustředí se pouze na rozložení a strukturu, zcela ignorují barvy a písmo. Často se kreslí jen tužkou na papír nebo v jednoduchých online nástrojích.
+	2.  **Mockupy (Vizuální návrhy):**
+		- Jsou to vysoce věrné (high-fidelity) návrhy, které vypadají přesně tak, jak má finální produkt vypadat. Zahrnují reálné barvy, písma a obrázky. Vytvářejí se v nástrojích jako **Figma**, Sketch nebo Adobe XD. Náš `style.css` byl v podstatě kódováním takového (myšleného) mockupu.
+	3.  **Běžné skenovací vzory (Scanning Patterns):**
+		- Uživatelé na webu nečtou – skenují. V západním světě sledují jejich oči nejčastěji dva vzory:
+		    * **F-Pattern:** Uživatel skenuje horní část stránky (horní lišta "F"), pak sjede pohledem níže a skenuje další horizontální řádek (kratší lišta "F"). Typické pro blogy a zpravodajství.
+		    * **Z-Pattern:** Oko přejede zleva doprava nahoře, pak diagonálně dolů doleva a opět zleva doprava dole. Typické pro jednodušší stránky a "landing pages".
+- Znalost těchto vzorů vám pomůže umístit nejdůležitější prvky (jako tlačítko "Registrovat") tam, kam se uživatel přirozeně podívá.
 ### Praktický UI kit
-- Vytvoření knihovny designových komponent.
+- Ať už pracujete sami nebo v týmu, klíčem k udržitelnosti a konzistenci je **UI Kit** (nebo "Design System"). Je to sbírka všech znovupoužitelných komponent a definovaných pravidel pro váš projekt.
+- Představte si ho jako vaši osobní "knihovnu" designových prvků.
+#### Co typický UI Kit obsahuje:
+* **1. Základy (Foundations):**
+    * **Barevná paleta:** (Přesné HEX kódy pro vaši primární, sekundární a akcentní barvu).
+    * **Typografie:** (Jak vypadá `<h1>`, `<h2>`, `<p>`, `<a>`).
+    * **Mezery (Spacing):** (Jaké jsou vaše standardní hodnoty `margin` a `padding`, např. 8px, 16px, 24px).
+* **2. Komponenty (Components):**
+    * **Tlačítka (Buttons):** Jak vypadá primární tlačítko? Sekundární? Jak vypadají ve stavu `:hover` nebo `:disabled`?
+    * **Karty (Cards):** Jak vypadá `article` v našem projektu? Má mít stín? Zaoblené rohy?
+    * **Formulářové prvky:** Jak vypadá `input`, `label`, `checkbox`?
+- V našem mini-projektu by UI Kit znamenal, že bychom si definovali: 
+	- "Všechna `<h2>` budou mít velikost `1.8rem` a spodní linku `2px solid #ddd`." 
+	- Když pak přidáme novou sekci, jen použijeme `<h2>` a máme zaručenou konzistenci.
 ---
 ## JavaScript – základy logiky webu
-- Úvod do JavaScriptu a jeho role v interaktivitě webových stránek.
+- Doposud jsme vytvořili kostru (HTML) a dali jí vzhled (CSS). Náš web je ale stále statický – je to jen hezký dokument. Nyní přidáme **"mozek"** a **"svaly"** pomocí **JavaScriptu (JS)**.
+- JavaScript je **programovací jazyk**, který běží přímo v prohlížeči uživatele. 
+  Umožňuje nám:
+	* **Reagovat na akce uživatele** (kliknutí, vyplnění formuláře, scrollování).
+	* **Dynamicky měnit obsah** stránky bez nutnosti jejího znovunačtení.
+	* **Komunikovat se serverem** na pozadí (načítat nová data, odesílat formuláře).
+	* Provádět výpočty, animovat prvky a mnoho dalšího.
+---
 ### Proměnné, funkce, cykly
-- Základní stavební prvky programování ukázané na webových příkladech.
+- Toto jsou základní stavební bloky jakéhokoliv programovacího jazyka.
+#### Proměnné (Variables)
+- Proměnné jsou "kontejnery" pro ukládání dat (čísla, text, objekty). V moderním JS používáme dvě klíčová slova:
+- **`let`**: Pro proměnné, jejichž hodnota se **může změnit**.
+```javascript
+    let vek = 30;
+    vek = 31; // OK
+```
+-  **`const`**: Pro konstanty, jejichž hodnota se **měnit nesmí**. Je to preferovaný způsob, pokud víte, že hodnotu měnit nebudete (zvyšuje bezpečnost a čitelnost kódu).
+```javascript
+    const jmeno = "Martin";
+    // jmeno = "Petr"; // Vyhodí chybu! (snažíme se měnit konstantu)
+```
+
+>[!Note] **Poznámka:** 
+>- Dříve se používalo klíčové slovo `var`. Dnes se jeho používání nedoporučuje kvůli jeho matoucímu chování (tzv. hoisting a funkční scope). Vždy preferujte `let` a `const`.
+>	- **Hoisting**: je chování, při kterém se deklarace (nikoli inicializace) proměnných, funkcí a tříd přesunou na začátek jejich rozsahu (scope) během kompilace.
+>	- **Funkční scope**: Je oblast, kde jsou proměnné a funkce vytvořené uvnitř funkce dostupné pouze uvnitř této funkce.
+#### Datové typy
+- Základní typy dat, se kterými pracujeme:
+    - **`string`**: Text (`"Ahoj světe"`)
+    - **`number`**: Číslo (`10`, `3.14`)
+    - **`boolean`**: Pravda / Nepravda (`true`, `false`)
+    - **`array`**: Seznam hodnot (`[1, "text", true]`)
+    - **`object`**: Kolekce dat ve formátu „klíč: hodnota” (`{ jmeno: "Martin", vek: 20 }`)
+    - **`null`**: Záměrně prázdná hodnota – říká: „tady nic není“ (`null`)
+    - **`undefined`**: Hodnota, která ještě nebyla nastavena (`let x; // undefined`)
+    - **`bigint`**: Velká čísla mimo rozsah typu `number` (`12345678901234567890n`)
+    - **`symbol`**: Unikátní identifikátor – používá se pro speciální případy (`Symbol("id")`)
+    - **`function`**: V JS funkce fungují také jako datový typ (`function pozdrav() {}`)
+>[!Note] `null` vs `undefined`
+> `undefined`
+> 	- Hodnota, která _vznikla sama_, protože ji JavaScript ještě nedostal.
+> 	- Nastává například když:
+> 		- deklaruješ proměnnou, ale nic do ní nedáš
+> ```javascript
+> let x; console.log(x); // undefined
+> ```
+> - funkce nic nevrátí
+> - objekt nemá danou vlastnost
+> - **`undefined` = „Nevím, co tady má být.“**
+> ---
+> `null`
+> - Hodnota, kterou _dáš záměrně_, aby řekla: „Tady nic není.“
+> - Například:
+> ```javascript
+> let uzivatel = null; // aktuálně žádný přihlášený uživatel
+> ```
+>- Používá se tehdy, když **chceš říct, že hodnota existuje, ale je prázdná**.
+>- **`null` = „Vím, že to tu má být, ale nemá to žádnou hodnotu.“**
+#### Funkce (Functions)
+- Funkce jsou znovupoužitelné bloky kódu, které provádějí specifický úkol.
+```javascript
+// Tradiční deklarace funkce
+// Funkci můžeš volat kdykoliv poté i předtím (hoisting ji zvedne nahoru).
+function pozdrav(jmeno) {
+    // Funkce může přijímat parametry (zde: "jmeno")
+    // "return" vrátí hodnotu volajícímu kódu
+    return "Ahoj, " + jmeno + "!";
+    // Po returnu se funkce ukončí
+}
+
+// Moderní šipková funkce (Arrow Function)
+// Arrow funkce se ukládají do proměnné.
+// Narozdíl od tradiční funkce NEJSOU "hoistované" — musí být definované před použitím.
+const pozdravArrow = (jmeno) => {
+    // Šipkový zápis je kratší a čitelnější, používá se velmi často.
+    // Pomocí Template Literals (`...`) lze vkládat proměnné přímo do textu.
+    return `Ahoj, ${jmeno}!`;
+};
+
+// Volání funkcí
+// Funkci zavoláš tak, že za její název napíšeš závorky a parametry.
+// Výsledek uložení do proměnné:
+let zprava = pozdrav("Martine"); 
+// zprava teď obsahuje: "Ahoj, Martine!"
+
+let zprava2 = pozdravArrow("Martine");
+// zprava2 obsahuje: "Ahoj, Martine!"
+```
+##### Funkce jako datový typ
+- V JavaScriptu je funkce považovaná za **value** (hodnotu), úplně stejně jako string, číslo nebo objekt.
+- To znamená, že s funkcemi můžeš:
+	- předávat je do jiné funkce,
+	- ukládat je do proměnných,
+	- vracet je z funkcí,
+	- ukládat je do polí nebo objektů.
+- Tohle je něco, co v mnoha jiných jazycích nejde — JavaScript je v tomhle flexibilní.
+- Díky tomu fungují:
+	- event listenery,
+	- callbacky,
+	- promise `.then()`,
+	- React komponenty,
+	- middleware,
+	- Express routy,
+	- atd.
+###### Funkce jako hodnota:
+```javascript
+let pozdrav = function() {
+    console.log("Ahoj!");
+};
+
+pozdrav(); // funguje normálně
+```
+###### Funkce v poli:
+```javascript
+let akce = [
+    () => console.log("První"),
+    () => console.log("Druhá")
+];
+
+akce[1](); // Druhá
+```
+###### Funkce vracející funkci:
+```javascript
+function vytvorPozdrav(jmeno) {
+    return () => console.log("Ahoj " + jmeno);
+}
+
+let pozdrav = vytvorPozdrav("Petr");
+pozdrav(); // Ahoj Petr
+```
+#### Cykly a Podmínky
+
+##### Operátory pro podmínky
+###### **Porovnávací operátory**
+- Používají se pro porovnávání dvou hodnot — výsledek je vždy `true` nebo `false`.
+
+| Operátor | Význam                                | Příklad     | Výsledek |
+| -------- | ------------------------------------- | ----------- | -------- |
+| `==`     | Porovnává hodnotu (bez ohledu na typ) | `5 == "5"`  | `true`   |
+| `===`    | Porovnává hodnotu i typ               | `5 === "5"` | `false`  |
+| `!=`     | Nerovnost hodnot                      | `3 != 5`    | `true`   |
+| `!==`    | Nerovnost hodnoty nebo typu           | `3 !== "3"` | `true`   |
+| `>`      | Větší než                             | `7 > 3`     | `true`   |
+| `<`      | Menší než                             | `3 < 5`     | `true`   |
+| `>=`     | Větší nebo rovno                      | `6 >= 6`    | `true`   |
+| `<=`     | Menší nebo rovno                      | `2 <= 5`    | `true`   |
+###### **Logické operátory**
+- Používají se v podmínkách pro kombinování více logických výrazů.
+
+| Operátor | Význam                                          | Příklad             | Výsledek |
+| -------- | ----------------------------------------------- | ------------------- | -------- |
+| `&&`     | Logické **A** — obě podmínky musí být pravda    | `true && false`     | `false`  |
+| \| \|    | Logické **NEBO** — stačí, aby jedna byla pravda | `true` \|\| `false` | `true`   |
+| `!`      | Logické **NOT** — obrací hodnotu                | `!true`             | `false`  |
+##### Podmínky (`if`, `else`, `else if`, `switch`)
+- Podmínky umožňují řídit tok programu. Kód se spustí pouze tehdy, pokud je splněna definovaná podmínka.  
+- Program tak může reagovat na různé situace — například na hodnotu proměnné, vstup uživatele nebo výsledek výpočtu.
+###### `if` – základní konstrukce
+- Když je podmínka splněna, provede se blok kódu:
+```javascript
+let teplota = 35;
+
+if (teplota > 30) { // Pokud je teplota větší jak 30 (35>30 -> true)
+    console.log("Je horko."); // Vypiš je horko
+}
+```
+###### `if / else`
+- Použije se, pokud chceme alternativu, když se podmínka nesplní:
+```javascript
+let skore = 85;
+
+if (skore > 90) { // Podmínka není splněna (85 > 90 → false)
+    console.log("Výborně!");
+} else { // Provádí se tedy tato větev
+    console.log("Je třeba se víc snažit.");
+}
+```
+- Podmínka splní pouze jednu větev!
+###### `else if`
+- Slouží pro více možností:
+```javascript
+let skore = 75;
+
+if (skore >= 90) { // false
+    console.log("Výborně.");
+} else if (skore >= 70) { // true -> provede se tato větev
+    console.log("Chvalitebné.");
+} else if (skore >= 50) { // true -> už se neprovede, jelikož se už jenda true podmínka našla před touto 
+	console.log("Dobré.");
+} else {
+    console.log("Nedostatečné."); // také se neprovádí
+}
+```
+- Můžete si povšimnout, že výše jsou splněné 2 podmínky, avšak pouze jedna se vykoná.
+- To se děje kvůli tomu, že podmínky se procházejí postupně od zhora dolů, a provede se pouze první, která se najde jako `true`, popřípadě podmínka `else` pokud se `true` nenajde.
+###### `switch`
+- Používá se, když porovnáváš **jednu hodnotu** vůči **více možnostem**.  
+- Je přehlednější než několik `else if` za sebou:
+```javascript
+	let den = 2;
+
+switch (den) { // Porovnává se den === case
+    case 1:
+        console.log("Pondělí");
+        break; // Zabrání pokračování do další větve
+    case 2: // den === 2 -> true
+        console.log("Úterý"); // tato větev se provede
+        break;// Zabrání pokračování do další větve
+    case 3:
+        console.log("Středa");
+        break;
+    default: // Defaultní větev, pokud se den neshoduje s žádnou case
+        console.log("Neplatný den");
+}
+```
+- `switch` na rozdíl od  `if` nekontroluje jednotlivé větve. `switch` totiž zjistí hodnotu zadaného parametru a okamžitě ví jakou větev má spustit. Toto je výhodné pro to když máme několik možností, jelikož `switch` nám rovnou najde větev, ale `if` musí ověřit každou podmínku dokud nenajde správnou větev. (při nejhorším případě `if` zkontroluje všechny podmínky což je neefektivní) 
+- `switch` porovnává pouze pomocí `===`, ničím jiným neporovnává. Také porovnává pouze hodnoty nikoliv podmínky. 
+- To že porovnává pomocí `===` může vést k občasnému zmatku v debugování, pokud si toto nezapamatujete.
+```javascript
+let x = 5;
+
+switch (x) {
+    case "5":   // string ≠ number → neprojde
+        console.log("Tohle se nevypíše");
+        break;
+    case 5:     // number === number → OK
+        console.log("Správně!");
+        break;
+}
+```
+- Povolené hodnoty k porovnání
+```javascript
+switch (x) {
+    case 1:
+    case "text":
+    case true:
+    case null:
+}
+```
+- Nepovolené hodnoty k porovnání
+```javascript
+switch (x) {
+    case x > 10: // ❌ NESPRÁVNĚ – není to hodnota
+    case (a + b): // ❌ výraz, ne hodnota
+    case (funkce()): // ❌ výsledek funkce – není statická hodnota
+}
+```
+- Můžete se ale setkat s tím, že se v case objeví porovnání. Koukněte na příklad níže.
+```javascript
+switch (true) {
+    case x > 10:
+        console.log("větší než 10");
+        break;
+
+    case x > 5:
+        console.log("větší než 5");
+        break;
+}
+```
+- To FUNGUJE, ale jen kvůli tomu:
+	- `switch` porovnává hodnotu `true`
+	- s výsledkem výrazu `x > 10` (což je také `true` / `false`)
+>[!Warning] Není to oficiální účel, je to hack.
+> - `switch` je určen pro porovnávání **jedné hodnoty vůči konkrétním hodnotám** (`===`).
+> - Použití výrazu je jen trik. -> může vést k neočekávanému chování
+> - Pro porovnávání by se měl použít `if`.
+###### Rozdíl mezi `if` a `switch`
+
+| `if`                                        | `switch`                                                                                         |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Porovnává komplexní výrazy (např. >, <, &&, | Porovnává pouze určité hodnoty pomocí `===`                                                      |
+| Univerzální a flexibilní.                   | Čitelnější při mnoha možnostech.                                                                 |
+| Vhodné pro logiku obsahující více podmínek. | Vhodné pro jednoduché porovnání jedné hodnoty. Mnohem rychlejší pro mnoho jednoduchých podmínek. |
+
+---
+##### Cykly (`for`, `while`, `do...while`, `forEach`…)
+- Cykly opakují kód, dokud je splněna podmínka, nebo dokud neprojdou všechny položky v poli.  
+- Nejčastěji se používají při práci s daty — seznamy produktů, výsledky API, řádky tabulky…
+---
+###### `for` — klasický cyklus
+- Hodí se, když potřebujete kontrolovat index a mít plnou kontrolu nad průběhem:
+```javascript
+for (let i = 0; i < 5; i++) {  // i začíná na 0, běží dokud i < 5, po každém kole se zvětší o 1
+    console.log("Číslo:", i); // Vypíše 0,1,2,3,4
+}
+```
+- Parametry `for` cyklu
+	1. parametr nám definuje proměnnou, kterou použijeme jako index
+	2. parametr nám udá podmínku, do kdy se má cyklus provádět. Porovnává se index s tím co zrovna potřebujeme
+	3. parametr nám určuje, co se s indexem po skončení cyklu stane. Nejčastěji se dává zvětšení o 1 nahoru, ovšem můžeme si to určit, jak se nám to zrovna hodí.
+###### `while` — opakuje se, dokud je podmínka pravda
+- Funguje jako „opakuj, dokud platí…“:
+```javascript
+let x = 0; // definování hodnoty pro cyklus
+
+while (x < 3) {      // Běží, dokud je podmínka true
+    console.log(x);  // Vypíše 0,1,2
+    x++;             // Bez zvýšení by vznikl nekonečný cyklus
+}
+```
+###### `do...while` — provede se **minimálně jednou**
+- Rozdíl oproti `while` -> nejdřív se provede kód, teprve potom se kontroluje podmínka.
+```javascript
+let y = 0; // definování hodnoty pro cyklus
+
+do {
+    console.log(y); // Tento kód se provede vždy alespoň jednou
+    y++; // Zvýšení indexu o 1
+} while (y < 3);     // Po provedení znovu kontroluje podmínku
+```
+###### `for...of` — moderní iterace přes pole
+- Ideální na čitelné procházení seznamů:
+```javascript
+const ovoce = ["Jablko", "Banán", "Pomeranč"];
+
+for (const item of ovoce) { // item = každá položka pole
+    console.log(item);
+}
+```
+###### `forEach` — metoda pole
+- Velmi oblíbený způsob v moderním JavaScriptu.
+```javascript
+const ovoce = ["Jablko", "Banán", "Pomeranč"];
+
+ovoce.forEach((item) => {  // Pro každou položku zavolá funkci
+    console.log(item);
+});
+```
+###### `for...in` — iterace přes klíče objektu
+- Nehodí se na pole, používá se pro objekty:
+```javascript
+const osoba = { jmeno: "Jan", vek: 25 };
+
+for (const klic in osoba) {            // klic = název vlastnosti objektu
+    console.log(klic, osoba[klic]);    // vypíše: jmeno Jan / vek 25
+}
+```
+
+---
+##### Zacyklení (infinite loop)
+- Cyklus se může nikdy nezastavit, pokud je podmínka **stále pravdivá**:
+```javascript
+while (true) { // Opakuje se do nekonečna, jelikož podmínka je pořád true
+	console.log("Tohle nikdy neskončí!"); 
+}
+```
+- To může vést k:
+	- zamrznutí skriptu,
+	- vytížení CPU,
+	- spadnutí aplikace.
+- Proto je důležité vždy aktualizovat proměnné, které podmínku ovlivňují.
+>[!Note] 
+> - Například ale v Arduinu, či jiných mikrokontrolérech, můžeme zacyklení využít k našemu prospěchu. Například pokud potřebujeme něco monitorovat a následně to zapsat do logů, můžeme k tomu využít nekonečný cyklus.  
+> - Jak to bude probíhat:
+> 	- Zapneme arduino -> začne s monitoringem
+> 	- Zapnuté arduino -> neustále monituruje a loguje
+> 	- Vypneme arduino -> zastavíme monitoring
+- Toto ale ovšem neplatí pro webové stránky, v javascriptu, v prohlížeči nekonečný cyklus `while(true)` zamrzne stránku. 
+---
+##### Kdy použít který cyklus?
+
+| Typ cyklu    | Kdy ho použít                                                      |
+| ------------ | ------------------------------------------------------------------ |
+| `for`        | Když potřebuješ index nebo chceš počítat krok.                     |
+| `while`      | Když nevíš, kolikrát se cyklus provede (např. čekání na podmínku). |
+| `do...while` | Když se kód má provést aspoň jednou.                               |
+| `for...of`   | Nejčtenější varianta pro pole a iterovatelné objekty.              |
+| `forEach`    | Moderní práce s poli, hlavně v JS aplikacích.                      |
+| `for...in`   | Pro procházení klíčů objektů.                                      |
+
+---
 ### DOM – manipulace s prvky
-- Jak JavaScript komunikuje s HTML strukturou.
+- **DOM (Document Object Model)** je klíčový koncept. Když prohlížeč načte vaše HTML, převede ho na stromovou strukturu objektů – DOM. JavaScript pak může tento strom **číst a upravovat**.
+#### 1. Výběr prvků
+- Než můžeme něco změnit, musíme to vybrat. Používáme metody objektu `document`:
+	- `document.getElementById('nejake-id')`: Vybere prvek podle jeho `id`. (Nejrychlejší)
+	- `document.querySelector('.nejaka-trida')`: Vybere **první** prvek, který odpovídá CSS selektoru. (Nejuniverzálnější)
+	- `document.querySelectorAll('.nejaka-trida')`: Vybere **všechny** prvky, které odpovídají selektoru (vrátí seznam).
+#### 2. Úprava prvků
+- Jakmile máme prvek vybraný (uložený v proměnné), můžeme ho měnit:
+	- `.textContent`: Mění **pouze text** uvnitř prvku (bezpečné).
+	- `.innerHTML`: Mění **celé HTML** uvnitř prvku (může být nebezpečné kvůli XSS útokům, pokud vkládáte data od uživatele – k tomu se dostaneme v kapitole o bezpečnosti).
+	- `.style`: Umožňuje měnit CSS vlastnosti (`element.style.color = "red";`).
+	- `.classList`: Umožňuje přidávat nebo odebírat CSS třídy (`element.classList.add('aktivni');`).
+#### 3. Tvorba a mazání prvků
+- Můžeme také vytvářet úplně nové prvky:
+```javascript
+// 1. Výběr rodiče
+const seznam = document.querySelector('#mujoblibeny-seznam');
+
+// 2. Vytvoření nového prvku
+const novaPolozka = document.createElement('li');
+
+// 3. Nastavení jeho obsahu
+novaPolozka.textContent = "Nová položka";
+
+// 4. Přidání prvku do DOMu (na konec seznamu)
+seznam.appendChild(novaPolozka);
+
+// Mazání prvku
+// novaPolozka.remove(); 
+```
+---
 ### Události (click, input…)
-- Jak reagovat na akce uživatele a vytvářet interaktivitu.
+- JavaScript je **řízený událostmi (event-driven)**. Čeká, až uživatel něco udělá (událost), a pak spustí kód, který je na tuto událost navázán.
+- Moderní způsob "poslouchání" událostí je metoda `.addEventListener()`:
+```javascript
+// 1. Vybereme tlačítko
+const tlacitko = document.querySelector('#moje-tlacitko');
+
+// 2. Definujeme funkci, která se má spustit
+const priKliknuti = () => {
+    alert("Bylo na mě kliknuto!");
+};
+
+// 3. Přidáme "posluchače", který spojí událost 'click' s naší funkcí
+tlacitko.addEventListener('click', priKliknuti);
+```
+- **Běžné typy událostí:**
+	- `click`: Kliknutí myší.
+	- `input`: Změna hodnoty ve formulářovém poli (`<input>`).
+	- `submit`: Odeslání formuláře (`<form>`).
+	- `mouseover`: Najetí myší na prvek.
+- U formulářů je časté zabránit jejich výchozímu chování (které by znovu načetlo stránku) pomocí `event.preventDefault()`:
+```javascript
+const formular = document.querySelector('#muj-formular');
+formular.addEventListener('submit', (event) => {
+    event.preventDefault(); // Zabráníme odeslání a znovunačtení
+    console.log("Formulář odeslán pomocí JS!");
+});
+```
+---
 ### Fetch API – volání serveru
-- Jak získávat data ze serveru pomocí HTTP požadavků.
+- Weby jsou zřídka statické. Často potřebujeme načíst data ze serveru (např. seznam produktů, počasí). K tomu slouží **Fetch API**.
+- `fetch()` je **asynchronní** funkce. To znamená, že její spuštění **neblokuje** zbytek kódu. JS na ni nečeká, ale pokračuje dál. Výsledek nám "slíbí" do budoucna. Tomuto slibu se říká **Promise**.
+- S "Promises" pracujeme pomocí metody `.then()` (co dělat, až se slib splní) a `.catch()` (co dělat, když nastane chyba).
+```javascript
+// Adresa API (v tomto případě veřejné API pro testování)
+const url = '[https://jsonplaceholder.typicode.com/posts/1](https://jsonplaceholder.typicode.com/posts/1)';
+
+console.log("Začátek volání...");
+
+fetch(url)
+    .then(response => {
+        // První .then() zpracuje odpověď serveru (HTTP status atd.)
+        // Převedeme data z formátu JSON na JS objekt
+        return response.json(); 
+    })
+    .then(data => {
+        // Druhý .then() má k dispozici reálná data
+        console.log("Data dorazila:", data.title);
+    })
+    .catch(error => {
+        // .catch() zachytí jakoukoliv chybu během volání
+        console.error("Chyba při načítání:", error);
+    });
+
+console.log("... kód pokračuje, nečeká na data.");
+```
+---
 ### Asynchronní JS (async/await)
-- Práce s asynchronními procesy v JavaScriptu.
+- Řetězení `.then()` může být nepřehledné. Moderní JS nabízí elegantnější syntaxi pro práci s "Promises": `async/await`.
+- Je to tzv. "syntaktický cukr" – kód dělá na pozadí to samé co `.then()`, ale nám umožňuje psát asynchronní kód, jako by byl synchronní (lineární).
+- Pravidla:
+	1. Funkce, která používá `await`, musí být označena jako `async`.
+	2. `await` "pozastaví" provádění _pouze dané funkce_, dokud `Promise` není splněn.
+	3. Asynchronní kód bychom měli vždy obalit do bloku `try...catch` pro odchycení chyb.
+```javascript
+const nactiData = async () => {
+    const url = '[https://jsonplaceholder.typicode.com/posts/1](https://jsonplaceholder.typicode.com/posts/1)';
+    console.log("Začínám načítat...");
+    
+    try {
+        // await "počká", až fetch skončí
+        const response = await fetch(url); 
+        
+        // await "počká", až se data převedou z JSONu
+        const data = await response.json(); 
+        
+        console.log("Data načtena:", data.title);
+    } catch (error) {
+        console.error("Chyba při načítání:", error);
+    }
+    
+    console.log("... funkce skončila.");
+};
+
+nactiData();
+```
+- Tento zápis je dnes profesionálním standardem.
+---
 ### Moduly
-- Dělení kódu na menší části pro lepší organizaci.
-### Mini-projekt: interaktivní To-Do app
-- Malá aplikace kombinující všechny předchozí koncepty.
+- Když se aplikace rozroste, nechceme mít veškerý kód v jednom obřím souboru. **ESM (ES Moduly)** je moderní standard JavaScriptu, jak rozdělit kód do více souborů.
+- **Princip:**
+	1. **Export:** Z jednoho souboru "zpřístupníme" funkce nebo proměnné pomocí klíčového slova `export`.
+	2. **Import:** V jiném souboru je "načteme" pomocí klíčového slova `import`.
+- **Příklad:**
+**`soubor: utils.js`**
+```javascript
+// Exportujeme pojmenovanou konstantu
+export const PI = 3.14159;
+
+// Exportujeme pojmenovanou funkci
+export const secti = (a, b) => {
+    return a + b;
+};
+```
+**`soubor: main.js`**
+```javascript
+// Importujeme specifické části z našeho modulu
+import { PI, secti } from './utils.js';
+
+console.log("Hodnota PI je:", PI);
+console.log("Součet 2+3 je:", secti(2, 3));
+```
+- Aby to celé fungovalo v prohlížeči, musíme hlavní skript v HTML označit jako modul:
+```html
+<script type="module" src="main.js"></script>
+```
+- Moduly nám umožňují psát čistý, organizovaný a znovupoužitelný kód, což je základem pro frameworky jako React.
+---
+
+### Mini-projekt: Osobní web s interaktivní To-Do app
+- Nyní zkombinujeme vše, co jsme se naučili. Přidáme na váš existující osobní web (`o-mne.html`) novou sekci `<section>`, která bude obsahovat plně funkční "To-Do List" (seznam úkolů).
+- **Požadavky:**
+	1. **HTML:** Přidejte do `index.html` novou sekci s `<input type="text">` pro nový úkol, `<button>` pro přidání a prázdný seznam `<ul>` pro zobrazení úkolů.
+	2. **JS (DOM + Události):** Vytvořte nový soubor `app.js` a připojte ho k HTML (pomocí `<script type="module">`).
+	3. **Přidání úkolu:** Napište funkci, která po kliknutí na tlačítko:
+	    - Přečte text z `<input>`.
+	    - Vytvoří nový prvek `<li>`.
+	    - Nastaví `<li>.textContent` na text z inputu.
+	    - Přidá `<li>` do `<ul>`.
+	    - (Bonus) Vyčistí `<input>`.
+	4. **Mazání úkolu (Bonus):** Přidejte na každý nový `<li>` `addEventListener('click')`. Po kliknutí na `<li>` se tento prvek smaže (`element.remove()`).
+	5. **Perzistence (Bonus 2):** Pomocí `localStorage.setItem()` a `localStorage.getItem()` zkuste zařídit, aby se úkoly uložily v prohlížeči a nezmizely po znovunačtení stránky.
+- příklad:
+`soubor: index.html`
+```html
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Martin Novan - Profil webového vývojáře a tvůrce</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header class="container">
+		<h1>Martin Novan</h1>
+		<p>Ahoj! Vítejte na mém webovém profilu.</p>
+	</header>
+	<main class="container">
+		<section>
+			<h2>O mně a mých zájmech</h2>
+			<img src="./Random_profile.avif" alt="Martin Novan, vývojář pracující u počítače" width="100" height="100">
+			<p>Jsem vývojář, který se zaměřuje na robustní a čistá softwarová řešení. Neustále rozšiřuji své dovednosti v oblasti moderních frameworků a operačních systémů.</p>
+			<p>Aktuálně se v rámci osobních projektů intenzivně věnuji technologiím jako je **.NET MAUI**, **Avalonia UI** a skriptování pro **3D tiskárny (Klipper)**.</p>
+		</section>
+		<section>
+			<h2>Technický Stack a Dovednosti</h2>
+			<ul>
+				<li><strong>Jazyky:</strong> C#, Python, SQL, HTML, CSS, JavaScript.</li>
+				<li><strong>Frameworky / UI:</strong> .NET, WPF, AvaloniaUI, MAUI.</li>
+				<li><strong>Databáze:</strong> MySQL, SQL, Microsoft SQL.</li>
+				<li><strong>OS/Nástroje:</strong> Arch Linux, Klipper (Firmware).</li>
+			</ul>
+		</section>
+		<section>
+			<h2>Vybrané projekty</h2>
+			<div id="projekty-kontejner">
+				<article>
+					<h3>Simple Virtual PC Management (SVPM)</h3>
+					<p>Nástroj pro správu virtuálních PC, zákazníků a jejich vztahů. Systém zahrnuje komplexní <strong>Customer Management</strong>, správu konfigurací, auditování změn a zabezpečení integrity dat pomocí **Hash Verification**.</p>
+				</article>
+				<article>
+					<h3>Endeaxim-3 (Hardware Upgrade Kit)</h3>
+					<p>Komplexní upgrade kit pro 3D tiskárnu Creality Ender 3. Projekt zahrnuje **Hardware Upgrades** (Dual Z-axis, Linear Rail), implementaci **Klipper Firmware** na Raspberry Pi a optimalizaci pro vysoké rychlosti. K dispozici jsou také **STEP soubory** pro precizní modely.</p>
+				</article>
+			</div>
+		</section>
+		<section id="todo-app">
+			<h2>Mini Aplikace: To-Do List</h2>
+			<p>Přidejte úkoly, které chcete splnit. Kliknutím na úkol ho označíte jako splněný (a smažete).</p>
+			<form id="todo-form">
+				<input type="text" id="todo-input" placeholder="Napište nový úkol..." aria-label="Nový úkol">
+				<button type="submit" id="todo-add-btn">Přidat</button>
+			</form>
+			<ul id="todo-list">
+			</ul>
+		</section>
+	</main>
+	<footer>
+	<nav>
+		<p>Najdete mě zde:</p>
+		<ul>
+			<li><a href="https://github.com/MartinNovan" target="_blank">GitHub Profil (My Repositories)</a></li>
+		</ul>
+	</nav>
+	<p>© 2025 Martin Novan. Všechna práva vyhrazena.</p>
+	</footer>
+	<script src="app.js" type="module"></script>
+</body>
+</html>
+```
+`soubor: app.js`
+```javascript
+/*
+ * Mini-projekt: Interaktivní To-Do List
+ * Tento soubor je načten jako modul (type="module"),
+ * takže se spustí až po načtení HTML (má vlastnost 'defer').
+ */
+
+// 1. Výběr elementu z index.html
+// Potřebujeme formulář, pole pro zadávání a seznam (ul)
+const todoForm = document.querySelector('#todo-form');
+const todoInput = document.querySelector('#todo-input');
+const todoList = document.querySelector('#todo-list');
+
+// Klíč pro ukládání dat do localStorage
+const STORAGE_KEY = 'moje-ukoly';
+
+// 2. Funkce
+/**
+ * Načte úkoly z localStorage při startu aplikace.
+ * Splňuje Bonus 2 (Perzistence).
+ */
+function nactiUkoly() {
+    // Získáme data z localStorage, nebo použijeme prázdné pole, pokud nic nenajdeme
+    const ukoly = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    
+    // Pro každý uložený textový úkol vytvoříme HTML element
+    ukoly.forEach(textUkolu => {
+        vytvorElementUkolu(textUkolu);
+    });
+}
+
+/**
+ * Hlavní funkce pro přidání nového úkolu (z formuláře).
+ * @param {Event} event - Událost odeslání formuláře
+ */
+function pridejUkol(event) {
+    event.preventDefault(); // Zabráníme výchozímu chování formuláře (znovunačtení stránky)
+    // Získáme text z inputu a ořízneme bílé znaky (mezery)
+    const textUkolu = todoInput.value.trim();
+    // Pokud je input prázdný, nic neděláme
+    if (textUkolu === '') {
+        alert("Musíte napsat nějaký úkol.");
+        return;
+    }
+    // 1. Vytvoříme HTML element
+    vytvorElementUkolu(textUkolu);
+    // 2. Vyčistíme input
+    todoInput.value = '';
+    // 3. Uložíme nový stav do localStorage (Bonus 2)
+    ulozUkoly();
+}
+
+/**
+ * Vytvoří a připojí <li> element do seznamu <ul>.
+ * @param {string} text - Text nového úkolu
+ */
+function vytvorElementUkolu(text) {
+    // Vytvoříme nový prázdný <li>
+    const li = document.createElement('li');
+    
+    // Nastavíme mu textový obsah
+    li.textContent = text;
+    // Splnění Bonusu 1 (Mazání úkolu)
+    // Přidáme posluchač události 'click' přímo na tento nový <li>
+    li.addEventListener('click', () => {
+        // Po kliknutí se prvek sám smaže z DOMu
+        li.remove();
+        // A aktualizujeme localStorage (Bonus 2)
+        ulozUkoly();
+    });
+    // Přidáme hotový <li> na konec seznamu <ul>
+    todoList.appendChild(li);
+}
+
+/**
+ * Uloží aktuální stav všech úkolů (textový obsah) do localStorage.
+ * Splňuje Bonus 2 (Perzistence).
+ */
+function ulozUkoly() {
+    const ukoly = [];
+    // Vybereme všechny <li> prvky v seznamu
+    const polozkySeznamu = document.querySelectorAll('#todo-list li');
+    
+    // Projdeme je a jejich textový obsah uložíme do pole
+    polozkySeznamu.forEach(li => {
+        ukoly.push(li.textContent);
+    });
+    
+    // Převedeme pole na JSON řetězec a uložíme ho
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(ukoly));
+}
+
+// 3. Spuštění a posluchač
+	// 1. Při načtení stránky se pokusíme načíst úkoly z úložiště
+nactiUkoly();
+	// 2. Nastavíme posluchač na formulář (pro událost 'submit')
+todoForm.addEventListener('submit', pridejUkol);
+```
+`soubor: style.css`
+```css
+/* 1. ZÁKLADNÍ NASTAVENÍ (RESET) */ 
+/* Zajišťuje, že se padding a border počítají dovnitř šířky elementu (border-box) */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} 
+/* Nastavení základního fontu a barvy pozadí / textu */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333; /* Tmavá barva textu */
+    background-color: #f4f4f9; /* Světle šedé pozadí */
+} 
+/* 2. TYPOGRAFIE A ZÁKLADNÍ VZHLED */ 
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+    color: #007bff; /* Modrá jako primární barva */
+} 
+h1 {
+    font-size: 2.5rem; /* Větší velikost pro hlavní nadpis */
+    color: #f4f4f9; /* Světle šedá pro kontrast s modrým pozadím */
+} 
+h2 {
+    font-size: 1.8rem;
+    padding-top: 1em;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 1em;
+} 
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+} 
+/* Stylování obrázku */
+img {
+    max-width: 100%; /* Zajištění, že obrázek nepřeteče rodičovský kontejner */
+    height: auto;
+    border-radius: 8px; /* Jemné zaoblení rohů */
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} 
+/* 3. ROZVRŽENÍ A FLEXBOX (LAYOUT) */ 
+.container {
+    /* Centrujeme obsah na stránce a dáváme mu maximální šířku */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+} 
+header, footer {
+    background-color: #007bff;
+    color: white;
+    padding: 1.5em 20px;
+    text-align: center;
+} 
+/* Vytvoření kontejneru pro navigaci/patičku pomocí Flexboxu */
+footer nav {
+    display: flex;
+    justify-content: center; /* Centrování obsahu (text a seznam) */
+    align-items: center;
+    flex-wrap: wrap; /* Umožní zalomení na malých obrazovkách */
+    gap: 20px;
+} 
+footer nav ul {
+    list-style: none; /* Odstranění odrážek */
+    margin: 0;
+    display: flex; /* Vodorovné zarovnání odkazů */
+    gap: 20px;
+} 
+/* Vytvoření Flex/Grid kontejneru pro sekci Vybrané projekty */
+#projekty-kontejner {
+    display: flex; /* Flexbox je ideální pro karty */
+    flex-direction: column; /* MOBILE-FIRST: ve výchozím stavu řadíme vertikálně (sloupec) */
+    gap: 25px;
+    margin-top: 20px;
+} 
+article {
+    background-color: white;
+    padding: 20px;
+    border-left: 5px solid #007bff; /* Vizuální akcent */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+} 
+/* 4. RESPONZIVITA (@MEDIA QUERIES) */ 
+/* Aplikuje se, když je šířka okna (viewport) alespoň 768px (Tablet a Desktop) */
+@media screen and (min-width: 768px) {
+    
+    /* Změna layoutu projektů z vertikálního na horizontální pomocí Flexboxu */
+    #projekty-kontejner {
+        flex-direction: row; /* Změna na horizontální uspořádání */
+    } 
+    /* Každý projekt zabere polovinu dostupného místa */
+    #projekty-kontejner article {
+        flex: 1 1 45%; /* Flex: grow shrink basis (umožní růst/smrsknutí a základní velikost) */
+    } 
+    /* Větší padding na velkých obrazovkách */
+    main section {
+        padding: 40px 0;
+    }
+} 
+/* 5. INTERAKTIVNÍ PRVKY (TRANSITIONS) */ 
+/* Stylování odkazů */
+a {
+    color: white; /* Barva odkazu ve footeru */
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent; /* Průhledná čára pro hladký přechod */
+    
+    /* Nastavení přechodu pro barvu textu a podtržení */
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out; 
+} 
+/* Efekt při najetí myší (hover) */
+a:hover {
+    color: #e2e6ea; /* Mírně světlejší barva */
+    border-bottom: 2px solid #e2e6ea; /* Zviditelnění podtržení */
+}
+/* 6. TO-DO app */
+#todo-app {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 40px;
+}
+#todo-form {
+    display: flex; /* Použijeme Flexbox pro zarovnání inputu a tlačítka */
+    gap: 10px; /* Mezera mezi nimi */
+    margin-bottom: 20px;
+}
+#todo-input {
+    flex: 1; /* Input zabere veškeré volné místo */
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+#todo-add-btn {
+    background-color: #007bff; /* Stejná modrá jako v designu */
+    color: white;
+    border: none;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#todo-add-btn:hover {
+    background-color: #0056b3; /* Tmavší modrá při najetí */
+}
+#todo-list {
+    list-style: none; /* Odstranění odrážek */
+    margin: 0;
+    padding: 0;
+}
+#todo-list li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    
+    /* Bonus 1: Indikace, že je prvek klikatelný */
+    cursor: pointer; 
+    
+    /* Plynulý přechod pro efekt */
+    transition: all 0.3s ease;
+}
+/* Bonus 1 (rozšíření): Efekt při najetí na úkol */
+#todo-list li:hover {
+    background-color: #f1f1f1;
+    text-decoration: line-through; /* Přeškrtnutí jako náznak smazání */
+    color: #888;
+}
+```
+- ukázka animace:
+- ![](Obrazky/Web_app_to_do_app.gif)
+
 ---
 # Moderní Frontend – frameworky a architektura
 ## JavaScript ekosystém
-- Přehled nástrojů a knihoven, které usnadňují práci s JS.
+- Když jsme v minulé kapitole psali kód, dělali jsme všechno ručně. Problém je, že moderní aplikace neobsahují jen náš kód, ale spoléhají na desítky či stovky "balíčků" (knihoven) od jiných vývojářů.
+- **JavaScript ekosystém** je termín pro obrovskou sbírku nástrojů, knihoven, frameworků a postupů, které nám umožňují:
+	- Spravovat závislosti (kód jiných lidí).
+	- Optimalizovat kód pro produkci.
+	- Automatizovat opakující se úkoly (jako je kompilace Sass).
+	- Psát kód rychleji a bezpečněji.
+- Tyto nástroje tvoří základ, na kterém stavíme frameworky jako React.
+---
 ### NPM a package.json
-- Jak funguje správa balíčků a závislostí.
+#### Co je NPM?
+- **NPM (Node Package Manager)** je největší světový "obchod" s open-source kódem. Je to obrovská online databáze (registr) balíčků – kousků JavaScript kódu, které za nás řeší nějaký problém.
+	- Potřebujete formátovat datum? Není třeba to psát, stačí `npm install date-fns`.
+	- Potřebujete dělat složité HTTP požadavky? `npm install axios`.
+	- Potřebujete postavit celou aplikaci? `npm install react`.
+- NPM je také **nástroj v příkazové řádce**, který se stará o instalaci a správu těchto balíčků.
+#### Co je `package.json`?
+- Pokud je NPM obchod, `package.json` je váš **nákupní seznam** a zároveň **občanský průkaz** vašeho projektu. Je to jednoduchý JSON soubor, který definuje metadata o projektu.
+- **Klíčové části `package.json`:**
+	- **`"name"`** a **`"version"`**: Identifikace vašeho projektu.
+	- **`"dependencies"`**: Seznam balíčků, které váš projekt potřebuje k **běhu** (např. `react`). Když spustíte `npm install react`, balíček se automaticky přidá sem.
+	- **`"devDependencies"`**: Seznam balíčků, které jsou potřeba pouze pro **vývoj** (např. testovací nástroje, bundlery jako Vite).
+	- **`"scripts"`**: Zkratky pro spouštění příkazů v terminálu. Místo psaní `vite --run-dev-server --port 3000` napíšete jen `npm run dev`.
+- Když si stáhnete projekt z GitHubu, neobsahuje složku `node_modules` (která je obrovská a nikdy se do Gitu nedává!). Stačí v terminálu spustit `npm install`. NPM si přečte `package.json` a automaticky stáhne všechny potřebné `dependencies` a `devDependencies`.
+---
 ### Bundlery – Webpack, Vite
-- Nástroje, které zrychlují vývoj a optimalizují kód.
+- V kapitole "Moduly" jsme propojili soubory `utils.js` a `main.js` pomocí `<script type="module">`. To funguje pro 2 soubory. Reálná aplikace má ale **stovky souborů**. Kdyby měl prohlížeč načítat každý soubor zvlášť, udělal by stovky HTTP požadavků a stránka by se načítala minuty.
+- **Problém:** Chceme psát kód modulárně (ve stovkách souborů), ale prohlížeč ho chce dostat ideálně v **jednom souboru**.
+- **Řešení:** **Bundler** (svazkovač).
+	- Bundler je nástroj, který projde veškerý váš kód (`.js`, `.css`, `.scss`, obrázky...), analyzuje všechny `import` příkazy a "sváže" je dohromady do jednoho (nebo několika málo) optimalizovaných souborů, kterým už prohlížeč rozumí.
+	- Během tohoto procesu také provádí další kouzla:
+		- **Minifikace:** Odstraní z kódu všechny mezery a zkrátí názvy proměnných, aby byl soubor co nejmenší.
+		- **Transpilace:** Převede moderní JS (nebo TypeScript) na starší verzi, které rozumí i starší prohlížeče.
+		- **Zpracování CSS:** Zkompiluje Sass, přidá vendor prefixy atd.
+#### Webpack vs. Vite
+- **Webpack:** Dlouholetý král. Je nesmírně konfigurovatelný, ale jeho nastavení je notoricky složité. Před spuštěním dev serveru musí "přebudovat" celou aplikaci.
+- **Vite:** Nová generace. Je extrémně rychlý, protože v developmentu využívá nativní ESM (které jsme se učili) a "bundluje" jen to, co je nezbytně nutné (např. závislosti). Bundluje až při finálním "buildu" pro produkci. Pro začátečníky je mnohem přívětivější a dnes je standardem pro React i Vue.
+---
 ### ESM vs CJS
-- Rozdíl mezi novým a starším modulem systému v JS.
-### Co je SPA
-- Úvod do Single Page Applications a jejich výhod.
+- Když jsme se učili moduly, použili jsme syntaxi `import` a `export`. Toto je **ESM (ECMAScript Modules)**, moderní, oficiální standard JavaScriptu pro práci s moduly, kterému rozumí prohlížeče.
+```javascript
+// ESM syntaxe (moderní, pro prohlížeče a nový Node.js)
+import { secti } from './utils.js';
+export const PI = 3.14;
+```
+- Dlouhou dobu ale existoval jiný standard, primárně vytvořený pro **Node.js** (JavaScript na serveru), kterému se říká **CJS (CommonJS)**. Prohlížeče mu vůbec nerozumí.
+```javascript
+// CJS syntaxe (starší, pro Node.js)
+const { secti } = require('./utils.js');
+module.exports.PI = 3.14;
+```
+- **Proč je to důležité?** Protože **NPM** (které vzešlo z Node.js) bylo historicky plné CJS balíčků. Dnešní bundlery (jako Vite) musí být schopné vzít starý CJS kód z `node_modules` a přeložit ho do ESM formátu, kterému rozumí prohlížeč
+- Dnes se celý ekosystém přiklání k ESM, ale CJS syntaxi (`require`) ještě uvidíte ve spoustě starších tutoriálů nebo v konfiguračních souborech Node.js.
+---
+### Co je SPA (Single Page Application)
+- Máme všechny nástroje a chápeme, jak fungují. K čemu je použijeme? K tvorbě **Single Page Application** (Aplikace na jedné stránce).
+#### Tradiční web (MPA - Multi-Page Application)
+- Postup
+	1. Zadáte `www.web.cz/o-nas`.
+	2. Prohlížeč pošle **HTTP request** serveru.
+	3. Server vrátí **kompletní HTML soubor** pro stránku "O nás".
+	4. Stránka se **kompletně znova načte** (bílá obrazovka, "bliknutí").
+	5. Kliknete na "Kontakt".
+	6. Celý proces se opakuje.
+#### Moderní web (SPA - Single Page Application)
+- Postup
+	1. Zadáte `www.app.cz`.
+	2. Prohlížeč pošle **HTTP request** serveru.
+	3. Server vrátí **jediný HTML soubor** (`index.html`) a **velký JS soubor** (náš "bundle" z Vite).
+	4. Stránka se načte. Nyní přebírá kontrolu JavaScript (např. React).
+	5. Kliknete na odkaz "O nás".
+	6. **Stránka se nenačte znova!**
+	7. JavaScript zachytí kliknutí, pomocí **Fetch API** si ze serveru stáhne **pouze potřebná data** (obvykle ve formátu JSON).
+	8. JavaScript pomocí **DOM manipulace** (kterou jsme se učili) "vymaže" obsah stránky a vykreslí nový obsah pro "O nás".
+	9. URL adresa v prohlížeči se změní (pomocí speciálního API), aby uživatel mohl použít tlačítko Zpět.
+- Výsledek je bleskurychlý. Aplikace působí jako program na počítači, ne jako webová stránka. Gmail, Google Mapy, Figma, Facebook – to všechno jsou Single Page Applications.
+- Frameworky jako **React** jsou navrženy přesně k tomu, aby nám tvorbu těchto komplexních SPA co nejvíce usnadnily. A my jsme nyní připraveni se na React podívat.
 ---
 ## React – profesionální úroveň
-- Jeden z nejpoužívanějších frameworků pro vývoj moderního frontendu.
+- React (často React.js) je **JavaScriptová knihovna** pro tvorbu uživatelských rozhraní (UI). Není to kompletní framework (jako např. Angular), ale specializovaná knihovna, která se soustředí na jednu věc a dělá ji skvěle: **efektivní vykreslování UI komponent**.
+- Proč je tak populární?
+	- **Deklarativní:** Místo ruční manipulace DOMu (jako v našem to-do listu, např. `document.createElement...`) Reactu pouze _deklarujeme_, jak má UI vypadat v závislosti na datech. React se sám postará o tu nejsložitější část – efektivní aktualizaci DOMu.
+	- **Komponentový přístup:** Umožňuje nám rozbít složité UI na malé, izolované a znovupoužitelné kousky – **komponenty**.
+	- **Virtual DOM:** React si drží v paměti vlastní "virtuální" kopii DOMu. Když se data změní, React porovná nový virtuální DOM se starým, najde minimální nutný rozdíl a ten pak promítne do skutečného DOMu. To je extrémně rychlé.
+---
 ### Komponenty
-- Základní stavební jednotky React aplikace.
+- **Komponenta je základní stavební jednotka Reactu.** Je to v podstatě JavaScriptová funkce (v moderním Reactu), která přijímá nějaká data a vrací HTML (respektive JSX).
+- Vzpomeňte si na `utils.js`, kde jsme exportovali funkci. Zde exportujeme "kus" uživatelského rozhraní.
+```javascript
+// soubor: Tlacitko.jsx
+// Toto je jednoduchá funkcionální komponenta.
+function Tlacitko() {
+    return (
+        <button className="moje-tlacitko">
+            Klikni na mě
+        </button>
+    );
+}
+// Exportujeme ji, abychom ji mohli použít jinde
+export default Tlacitko;
+```
+
+```javascript
+// soubor: App.jsx
+// Importujeme naši komponentu
+import Tlacitko from './Tlacitko.jsx';
+
+// App je také komponenta, která "obaluje" ostatní
+function App() {
+    return (
+        <div>
+            <h1>Moje React Aplikace</h1>
+            <Tlacitko />
+            <Tlacitko /> 
+        </div>
+    );
+}
+```
+- Všimněte si `className` místo `class`. Jelikož jsme v JavaScriptu, `class` je rezervované klíčové slovo. Syntaxi, která míchá HTML a JS, se říká **JSX (JavaScript XML)**.
+---
 ### Props a State
-- Jak funguje předávání dat a řízení stavu.
-### Hooks
-- Moderní způsob práce se stavem a životním cyklem komponent.
+- Toto je nejdůležitější koncept v Reactu. Komponenty potřebují data, aby byly dynamické. Data mohou získat ze dvou zdrojů: `props` nebo `state`.
+#### Props (Vlastnosti)
+- **Props** (properties) jsou data, která komponentě přicházejí **zvenčí**, od jejího rodiče. Komponenta je **nemůže sama změnit** (jsou pouze ke čtení, "read-only").
+- _Analogie: Jsou to argumenty funkce._
+```javascript
+// Rodič (App.jsx) posílá 'props'
+function App() {
+    return (
+        <div>
+            <Tlacitko text="Odeslat" />
+            <Tlacitko text="Zrušit" />
+        </div>
+    );
+}
+```
+
+```javascript
+// Potomek (Tlacitko.jsx) přijímá 'props'
+// 'props' je objekt: { text: "Odeslat" }
+function Tlacitko(props) {
+    return (
+        <button className="moje-tlacitko">
+            {props.text} 
+        </button>
+    );
+}
+```
+- Tomuto se říká **jednosměrný datový tok (one-way data flow)**. Data tečou vždy shora (rodič) -> dolů (potomek).
+#### State (Stav)
+- **State** (stav) jsou data, která komponenta spravuje **uvnitř sebe**. Je to její interní paměť. Když se `state` změní, React **automaticky a inteligentně překreslí** komponentu.
+- _Analogie: Jsou to lokální proměnné uvnitř funkce, které si "pamatují" hodnotu mezi voláními._
+- Jak ale přidáme `state` do funkce? Pomocí "háčků" (Hooks).
+---
+### Hooks (Háčky)
+- Hooks jsou speciální funkce (vždy začínají na `use...`), které nám umožňují "zaháknout se" do interních mechanismů Reactu (jako je state nebo životní cyklus) z funkcionálních komponent.
+#### `useState`
+- Nejdůležitější hook. Přidává komponentě lokální `state`.
+```javascript
+import { useState } from 'react'; // Musíme ho importovat
+
+function Pocitadlo() {
+    // useState vrátí pole: [aktuální hodnota, funkce pro změnu hodnoty]
+    // Používáme "destrukturaci" pole pro jejich pojmenování
+    const [pocet, setPocet] = useState(0); // 0 je počáteční hodnota
+    
+    const zvedniPocet = () => {
+        // Nikdy neměníme state přímo (NE: pocet = pocet + 1)!
+        // Vždy voláme nastavovací funkci.
+        setPocet(pocet + 1);
+    };
+    
+    return (
+        <div>
+            <p>Kliknul jsi {pocet} krát.</p>
+            <button onClick={zvedniPocet}>Klikni</button>
+        </div>
+    );
+}
+```
+- Když zavoláme `setPocet(1)`, React si všimne změny a **znovu spustí funkci `Pocitadlo`**, ale tentokrát bude mít `pocet` hodnotu 1. Tím se UI automaticky aktualizuje.
+#### `useEffect`
+- Tento hook slouží k provádění **vedlejších efektů (side effects)**. Vedlejší efekt je cokoliv, co se děje mimo samotné vykreslování komponenty:
+	- Načítání dat (Fetch)
+	- Přímá manipulace s DOM (výjimečně)
+	- Nastavení časovačů (`setTimeout`)
+- `useEffect` přijímá funkci a pole závislostí.
+```javascript
+// Spustí se POUZE jednou, když se komponenta poprvé vykreslí
+// (Díky prázdnému poli závislostí [])
+useEffect(() => {
+    console.log("Komponenta se poprvé vykreslila");
+    // Ideální místo pro fetch dat
+}, []);
+
+// Spustí se po každém vykreslení, pokud se změnila hodnota 'pocet'
+useEffect(() => {
+    document.title = `Kliknul jsi ${pocet} krát`;
+}, [pocet]); 
+```
+
+---
 ### Router
-- Jak tvořit více stránek v rámci jedné aplikace.
+- React sám o sobě neumí spravovat URL adresy (je to jen UI knihovna). Pro vytvoření **SPA** (kterou jsme definovali v minulé kapitole) potřebujeme externí balíček.
+- Nejpopulárnější je **React Router** (`npm install react-router-dom`).
+- Umožňuje nám definovat, která komponenta se má vykreslit pro jakou URL, aniž by se stránka znovu načítala.
+```javascript
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+function App() {
+    return (
+        <BrowserRouter>
+            <nav>
+                <Link to="/">Domů</Link>
+                <Link to="/o-nas">O nás</Link>
+            </nav>
+            
+            <Routes>
+                <Route path="/" element={<KomponentaDomu />} />
+                <Route path="/o-nas" element={<KomponentaONas />} />
+            </Routes>
+        </BrowserRouter>
+    );
+}
+```
+- `<BrowserRouter>` obaluje celou aplikaci a umožňuje sledovat URL.
+- `<Link>` funguje jako `<a>`, ale **bez reloadu stránky** — mění jen URL uvnitř SPA.
+- `<Routes>` vybírá, která `<Route>` odpovídá aktuální adrese.
+- Každá `<Route>` má:
+    - `path` – URL cesta (např. `/`, `/o-nas`)
+    - `element` – komponenta, která se má vykreslit
+---
 ### Formuláře a validace
-- Práce s uživatelskými vstupy v Reactu.
+- Ve "vanilla" JS jsme četli hodnotu z DOMu (`todoInput.value`). V Reactu je to jinak. Stav formuláře (co je napsáno v inputu) je uložen v **React `state`**.
+- Tomuto se říká **kontrolovaná komponenta (Controlled Component)**.
+```javascript
+import { useState } from 'react';
+
+function FormularJmena() {
+    const [jmeno, setJmeno] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Zabráníme znovunačtení stránky
+        alert(`Odesláno jméno: ${jmeno}`);
+        // Zde by proběhla validace...
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>Jméno:</label>
+            <input 
+                type="text"
+                value={jmeno} // Hodnota inputu je VŽDY řízena stavem
+                onChange={(e) => setJmeno(e.target.value)} // Každé písmeno aktualizuje stav
+            />
+            <button type="submit">Odeslat</button>
+        </form>
+    );
+}
+```
+- **Datový tok:** Uživatel píše -> spouští se `onChange` -> `setJmeno` aktualizuje `state` -> React překreslí komponentu -> `input` dostane novou hodnotu (`value={jmeno}`).
+---
 ### Fetch v Reactu
-- Získávání dat v komponentách.
+- Kam umístíme `fetch` kód, který jsme se naučili? Do `useEffect` hooku, aby se data načetla, jakmile se komponenta zobrazí. Načtená data uložíme do `state`.
+```javascript
+import { useState, useEffect } from 'react';
+
+// Komponenta, která načítá data z API
+function NactiData() {
+    const [data, setData] = useState(null); // Stav pro uložená data z API
+    const [nacitam, setNacitam] = useState(true); // Stav, který říká, zda se právě načítá
+    const [chyba, setChyba] = useState(null); // Stav pro případnou chybu při načítání
+    // useEffect se spustí po prvním vykreslení komponenty (mount)
+    useEffect(() => {
+        // Asynchronní funkce pro načtení dat
+        const nactiApi = async () => {
+            try {
+                const url = 'https://jsonplaceholder.typicode.com/posts/1';
+                // Zavoláme API pomocí fetch
+                const response = await fetch(url);
+                // Pokud server vrátí chybu (400, 500...), vyhodíme vlastní chybu
+                if (!response.ok) {
+                    throw new Error(`HTTP chyba! Status: ${response.status}`);
+                }
+                // Převedeme odpověď na JSON
+                const json = await response.json();
+                // Uložíme získaná data do stavu
+                setData(json);
+            } catch (e) {
+                // Pokud nastane chyba (např. síťová), uložíme si její text
+                setChyba(e.message);
+            } finally {
+                // Vždy se provede → říkáme, že načítání skončilo
+                setNacitam(false);
+            }
+        };
+        // Spustíme funkci pro načtení dat
+        nactiApi();
+        // Prázdné pole = efekt proběhne jen při prvním renderu
+    }, []);
+    // Pokud stále načítáme, zobrazíme hlášku
+    if (nacitam) return <p>Načítám data...</p>;
+    // Pokud nastala chyba, zobrazíme ji
+    if (chyba) return <p>Chyba: {chyba}</p>;
+    // Pokud máme data, zobrazíme název příspěvku
+    if (data) return <p>Název: {data.title}</p>;
+    // Teoretická fallback varianta (většinou se nestane)
+    return null;
+}
+```
+
+---
 ### Stavová správa (Redux, Zustand)
-- Řešení pro komplexní datové toky ve velkých aplikacích.
+- `useState` je skvělý pro lokální stav. Co když ale 50 komponent v různých částech aplikace potřebuje znát přihlášeného uživatele? Posílat `props` přes 10 úrovní (`prop drilling`) je neefektivní.
+- Potřebujeme **globální stav**.
+	- **Context API:** Vestavěný mechanismus Reactu pro sdílení dat. Dobrý pro menší objem dat (např. téma dark/light mode, přihlášený uživatel).
+	- **Zustand:** Moderní, minimalistická knihovna pro globální stav. Velmi jednoduchá na použití, využívá hooky.
+	- **Redux / Redux Toolkit:** Starší, robustnější standard pro obrovské aplikace. Má složitější "boilerplate" (více kódu na nastavení), ale nabízí striktní pravidla pro správu stavu (Actions, Reducers), což se hodí ve velkých týmech.
+---
 ### Testování (Jest, RTL)
-- Jak testovat funkčnost komponent.
+- Jak si můžeme být jisti, že naše komponenty fungují? Otestujeme je.
+	- **Jest:** Testovací platforma (nástroj od Facebooku), která poskytuje prostředí pro spouštění testů (funkce `test()`, `expect()`).
+	- **React Testing Library (RTL):** Knihovna pro "vykreslení" komponenty v testovacím prostředí a interakci s ní (simulace kliknutí, psaní do inputu).
+- Filozofie RTL je: "Testujte aplikaci tak, jak ji používá uživatel." Místo hledání `div`ů podle `id` nebo `className`, hledáte tlačítko podle jeho textu.
+```javascript
+import { render, screen, fireEvent } from '@testing-library/react';
+import Pocitadlo from './Pocitadlo';
+
+test('po kliknutí na tlačítko se zvýší počet', () => {
+    // 1. Vykreslíme komponentu
+    render(<Pocitadlo />);
+    
+    // 2. Najdeme elementy podle textu
+    const tlacitko = screen.getByText('Klikni');
+    const zprava = screen.getByText('Kliknul jsi 0 krát.');
+    
+    // 3. Simulujeme akci uživatele
+    fireEvent.click(tlacitko);
+    
+    // 4. Ověříme výsledek
+    const novaZprava = screen.getByText('Kliknul jsi 1 krát.');
+    expect(novaZprava).toBeInTheDocument();
+});
+```
+
+---
 ### Mini-projekt: React dashboard
-- Malá SPA aplikace vizualizující data.
+- Nyní vše spojíme.
+- **Cíl:** Vytvořit jednoduchou **SPA** (Single Page Application) dashboardu.
+- **Požadavky:**
+	1. **Nástroje:** Použijte `npm create vite@latest` pro rychlé nastavení projektu.
+	2. **Komponenty:** Vytvořte komponenty (`Sidebar.jsx`, `Dashboard.jsx`, `Users.jsx`).
+	3. **Router:** Použijte `react-router-dom` k vytvoření dvou stránek: `/` (Dashboard) a `/users` (Uživatelé).
+	4. **Fetch & State:** Na stránce `/users` použijte `useEffect` a `useState` k načtení a zobrazení seznamu uživatelů z veřejného API (např. `jsonplaceholder.typicode.com/users`).
+	5. **Formuláře:** (Bonus) Na stránce `/users` přidejte `<input>`, který bude pomocí `useState` filtrovat zobrazené uživatele podle jména.
 ---
 ## CSS ve velkých projektech
 - Organizace stylů, aby byly přehledné a snadno udržovatelné.
